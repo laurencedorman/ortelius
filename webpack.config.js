@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/editor.js",
+  entry: "./src/editor.jsx",
   mode: "development",
   output: {
     filename: "./main.js"
@@ -15,7 +15,7 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /(node_modules)/,
         use: {
           loader: "babel-loader"
@@ -38,5 +38,8 @@ module.exports = {
         use: ["file-loader"]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
 }
