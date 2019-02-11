@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/editor.jsx",
+  entry: "./src/viewer.jsx",
   mode: "development",
   output: {
     filename: "./main.js"
