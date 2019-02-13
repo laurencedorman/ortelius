@@ -9,6 +9,12 @@ import {
 
 // https://stackoverflow.com/questions/2916081/zoom-in-on-a-point-using-scale-and-translate
 
+/*
+scalechange = newscale - oldscale;
+offsetX = -(zoomPointX * scalechange);
+offsetY = -(zoomPointY * scalechange);
+*/
+
 const rawWidth = document.documentElement.clientWidth;
 const rawHeight = document.documentElement.clientHeight;
 
@@ -19,26 +25,15 @@ const Path = ({ path, id }) => {
 };
 
 const Map = ({ geojson, projection,height, width}) => {
-  const [count, setCount] = useState(0);
+  const [zoomLevel, setZoom] = useState(1);
 
   const [props, set] = useSpring(() => ({
-    transform: 'translate(0,0) scale(0.9)',
-    from: {
-      transform: 'translate(0,0) scale(1)',
-    },
     config: config.default,
-  }))
+  }));
   
-  set({ opacity: toggle ? 1 : 0 });
-  set({ transform: toggle ? 'translate(0,0) scale(0.9)' });
+  // set({ opacity: toggle ? 1 : 0 });
 
-  const props = useSpring({
-    transform: 'translate(0,0) scale(0.9)',
-    from: {
-      transform: 'translate(0,0) scale(1)',
-    },
-    config: config.default,
-  });
+  
 
   const path = geoPath().projection(projection.fitExtent([
     [0, 0],
@@ -52,16 +47,33 @@ const Map = ({ geojson, projection,height, width}) => {
       path={path(datum)}
     />
   );
-  
-  // console.log(props.scale);
 
   const zoomIn = () => {
-    debugger;
-    setCount(count * 0.9);
+    setZoom(zoomLevel + 0.1);
+    
+    const scaleChange = (zoomLevel + 0.1) - zoomLevel;
+    
+    const zoomPointX = width / 2;
+    const zoomPointY = height / 2;
+
+    const offsetX = -(zoomPointX * scaleChange);
+    const offsetY = -(zoomPointY * scaleChange);
+    
+    set({ transform: `translate(${offsetX},${offsetY}) scale(${zoomLevel})`});
   };
 
   const zoomOut = () => {
+    setZoom(zoomLevel - 0.1);
+    
+    const scaleChange = (zoomLevel - 0.1) - zoomLevel;
+    
+    const zoomPointX = width / 2;
+    const zoomPointY = height / 2;
 
+    const offsetX = -(zoomPointX * scaleChange);
+    const offsetY = -(zoomPointY * scaleChange);
+    
+    set({ transform: `translate(${offsetX},${offsetY}) scale(${zoomLevel})`});
   };
 
   const { transform } = props;
@@ -83,7 +95,7 @@ const Map = ({ geojson, projection,height, width}) => {
         </animated.g>
       </svg>
       <button onClick={zoomIn.bind(this)}>Zoom In</button>
-      {/* <button onClick={zoomOut.bind(this)}>Zoom out</button> */}
+      <button onClick={zoomOut.bind(this)}>Zoom out</button>
     </div>
   );
 };
