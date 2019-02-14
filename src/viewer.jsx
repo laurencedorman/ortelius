@@ -7,6 +7,8 @@ import {
   geoMercator,
 } from 'd3-geo';
 
+import ZoomableGroup from './ZoomableGroup';
+
 // https://stackoverflow.com/questions/2916081/zoom-in-on-a-point-using-scale-and-translate
 
 /*
@@ -24,16 +26,12 @@ const Path = ({ path, id }) => {
   );
 };
 
-const Map = ({ geojson, projection,height, width}) => {
+const Map = ({ geojson, projection, height, width}) => {
   const [zoomLevel, setZoom] = useState(1);
 
   const [props, set] = useSpring(() => ({
     config: config.default,
   }));
-  
-  // set({ opacity: toggle ? 1 : 0 });
-
-  
 
   const path = geoPath().projection(projection.fitExtent([
     [0, 0],
@@ -90,15 +88,18 @@ const Map = ({ geojson, projection,height, width}) => {
         // onMouseUp={this.onDragEnd.bind(this)}
         // onWheel={this.onWheel.bind(this)}
       >
-        <animated.g transform={transform}>
+        {/* <animated.g transform={transform}> */}
+        <ZoomableGroup width={width} height={height} projection={projection} center={[0,20]} zoom={1}>
           {geojson.features.map(renderPath)}
-        </animated.g>
+        </ZoomableGroup>
+        {/* </animated.g> */}
       </svg>
       <button onClick={zoomIn.bind(this)}>Zoom In</button>
       <button onClick={zoomOut.bind(this)}>Zoom out</button>
     </div>
   );
 };
+
 
 fetch('./france-departements-simplified.geojson')
   .then(res => res.json())
