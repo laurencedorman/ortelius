@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
-
-<body>
-  <div id="root"></div>
-</body>
-<script type="text/javascript" src="/main.js"></script>
-
+  <body>
+    <div id="root"></div>
+  </body>
+  <script type="text/javascript" src="/main.js"></script>
+  <script>
+    var map = Ortelius.create({
+      type: 'choropleth',
+      map: {
+        src: './france-departements-simplified.geojson'
+      },
+      zoom: true,
+      panning: true,
+      data: []
+    });
+  </script>
 </html>
