@@ -1,32 +1,36 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  entry: "./src/viewer.jsx",
-  mode: "development",
+  entry: './src/viewer/index',
+  mode: 'development',
   output: {
-    filename: "./main.js"
+    filename: './main.js',
+    libraryTarget: 'umd',
+    libraryExport: 'default',
+    library: 'Ortelius'
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'static')],
     compress: true,
     port: 9000,
     watchContentBase: true,
     progress: true
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: true
             }
@@ -35,11 +39,18 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
+        use: ['file-loader']
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      editor: path.resolve(__dirname, 'src/editor/'),
+      lib: path.resolve(__dirname, 'src/lib/'),
+      shared: path.resolve(__dirname, 'src/shared/'),
+      viewer: path.resolve(__dirname, 'src/viewer/'),
+      utils: path.resolve(__dirname, 'src/utils/')
+    }
   }
-}
+};
