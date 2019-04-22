@@ -48,7 +48,6 @@ module.exports = {
     alias: {
       editor: path.resolve(__dirname, 'src/editor/'),
       lib: path.resolve(__dirname, 'src/lib/'),
-      shared: path.resolve(__dirname, 'src/shared/'),
       viewer: path.resolve(__dirname, 'src/viewer/'),
       utils: path.resolve(__dirname, 'src/utils/')
     }
