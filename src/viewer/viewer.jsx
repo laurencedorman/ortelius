@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Map from 'shared/Map';
+import Map from './Map';
 
-const create = ({ map: { src } }) => {
-  const rawWidth = document.documentElement.clientWidth;
-  const rawHeight = document.documentElement.clientHeight;
+const create = ({ container, map: { src } }) => {
+  const containerElem = document.querySelector(container);
+
+  const { clientWidth, clientHeight } = document.documentElement;
 
   fetch(src)
     .then(res => res.json())
     .then(geojson => {
       ReactDOM.render(
-        <Map geojson={geojson} height={rawHeight} width={rawWidth} />,
-        document.getElementById('root')
+        <Map geojson={geojson} height={clientHeight} width={clientWidth} />,
+        containerElem
       );
     });
 };
