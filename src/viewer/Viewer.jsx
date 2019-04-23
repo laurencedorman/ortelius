@@ -18,6 +18,8 @@ const create = ({ container, map: { src } }) => {
     });
 };
 
+const Viewer = () => {};
+
 export default {
   create
 };
