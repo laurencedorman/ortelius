@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
+import { csvParse } from 'd3-dsv';
 
+import { useFetch } from 'hooks/useFetch';
 import Map from './Map';
 
-const create = ({ container, map: { src } }) => {
-  const containerElem = document.querySelector(container);
-
+function Viewer(props) {
+  const {
+    map: { src },
+    ...rest
+  } = props;
+  // @TODO fetch these only if param says so
   const { clientWidth, clientHeight } = document.documentElement;
 
-  fetch(src)
-    .then(res => res.json())
-    .then(geojson => {
-      ReactDOM.render(
-        <Map geojson={geojson} height={clientHeight} width={clientWidth} />,
-        containerElem
-      );
-    });
-};
+  const [data, loading] = useFetch(src);
 
-const Viewer = () => {};
+  if (!loading) {
+    return <Map topoJson={data} height={clientHeight} width={clientWidth} {...rest} />;
+  }
+
+  return null;
+}
 
 export default {
-  create
+  create({ container, ...rest }) {
+    const containerElem = document.querySelector(container);
+
+    ReactDOM.render(<Viewer {...rest} />, containerElem);
+  },
+  csvParse
 };

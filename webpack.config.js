@@ -47,6 +47,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {
       editor: path.resolve(__dirname, 'src/editor/'),
+      hooks: path.resolve(__dirname, 'src/hooks/'),
       lib: path.resolve(__dirname, 'src/lib/'),
       viewer: path.resolve(__dirname, 'src/viewer/'),
       utils: path.resolve(__dirname, 'src/utils/')

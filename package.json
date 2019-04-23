@@ -27,11 +27,12 @@
   "homepage": "https://github.com/laurencedorman/ortelius#readme",
   "dependencies": {
     "classnames": "^2.2.6",
+    "d3-dsv": "^1.1.1",
     "d3-geo": "^1.11.3",
+    "d3-scale": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-redux": "^6.0.0",
     "react-spring": "^8.0.5",
     "topojson": "^3.0.2"
   },
