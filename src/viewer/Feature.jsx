@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Feature = ({ path }) => {
-  return <path d={path} />;
-};
+export default function Feature({ path, fill, stroke }) {
+  return <path d={path} fill={fill} stroke={stroke} />;
+}
 
 Feature.propTypes = {
-  path: PropTypes.string.isRequired
+  fill: PropTypes.string,
+  path: PropTypes.string.isRequired,
+  stroke: PropTypes.string
 };
 
-export default Feature;
+Feature.defaultProps = {
+  fill: '#ccc',
+  stroke: '#000'
+};

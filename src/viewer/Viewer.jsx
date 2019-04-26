@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { csvParse } from 'd3-dsv';
+import PropTypes from 'prop-types';
 
 import useFetch from 'hooks/useFetch';
 import Map from './Map';
 
-function Viewer(props) {
-  const {
-    map: { src },
-    ...rest
-  } = props;
+export function Viewer(props) {
+  const { geoAssets, ...rest } = props;
   // @TODO fetch these only if param says so
   const { clientWidth, clientHeight } = document.documentElement;
-  const [data, loading] = useFetch(src);
+  const [data, loading] = useFetch(geoAssets);
 
   if (!loading) {
     return (
@@ -24,11 +21,14 @@ function Viewer(props) {
   return null;
 }
 
+Viewer.propTypes = {
+  geoAssets: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired
+};
+
 export default {
   create({ container, ...rest }) {
     const containerElem = document.querySelector(container);
 
     ReactDOM.render(<Viewer {...rest} />, containerElem);
-  },
-  csvParse
+  }
 };
