@@ -1,10 +1,5 @@
 import { scaleLinear } from 'd3-scale';
-import {
-  interpolateViridis,
-  interpolateInferno,
-  interpolatePlasma,
-  interpolateMagma
-} from 'd3-scale-chromatic';
+import { interpolateViridis } from 'd3-scale-chromatic';
 
 export default function createColorScale(data) {
   const scaleData = data.map(datum => datum.value);

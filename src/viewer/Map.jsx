@@ -27,7 +27,7 @@ export default function Map({
   panning,
   geoDataType,
   geoData,
-  projection = geoMercator(),
+  projection,
   height: containerHeight,
   width: containerWidth
 }) {
@@ -46,7 +46,7 @@ export default function Map({
 
   return (
     <SvgContainer margin={margin} height={containerHeight} width={containerWidth}>
-      <ZoomableGroup>
+      <ZoomableGroup zoom={zoom} panning={panning}>
         {layers.map(({ type, ...rest }) => {
           const Component = mapLayers[type];
 
@@ -62,14 +62,21 @@ export default function Map({
 }
 
 Map.propTypes = {
-  margin: PropTypes.number,
+  geoData: PropTypes.arrayOf(Object).isRequired,
+  geoDataType: PropTypes.string,
+  height: PropTypes.number.isRequired,
   layers: PropTypes.arrayOf(Object).isRequired,
+  margin: PropTypes.number,
   panning: PropTypes.bool,
+  projection: PropTypes.func,
+  width: PropTypes.number.isRequired,
   zoom: PropTypes.bool
 };
 
 Map.defaultProps = {
+  geoDataType: 'json',
   margin: 10,
   panning: true,
+  projection: geoMercator(),
   zoom: true
 };
