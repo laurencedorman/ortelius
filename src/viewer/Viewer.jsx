@@ -1,34 +1,34 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import useFetch from 'hooks/useFetch';
+import fileExtension from 'utils/fileExtension';
+
 import Map from './Map';
 
-export function Viewer(props) {
-  const { geoAssets, ...rest } = props;
-  // @TODO fetch these only if param says so
-  const { clientWidth, clientHeight } = document.documentElement;
-  const [data, loading] = useFetch(geoAssets);
+export default function Viewer(props) {
+  const { geoAssetsUrl, ...rest } = props;
 
-  if (!loading) {
+  const { clientWidth, clientHeight } = document.documentElement;
+  const [fetchedData, isLoading] = useFetch(geoAssetsUrl);
+
+  if (!isLoading) {
     return (
-      <div>
-        <Map topoJson={data} height={clientHeight} width={clientWidth} {...rest} />
+      <div className="viewer">
+        <Map
+          geoData={fetchedData}
+          geoDataType={fileExtension(geoAssetsUrl)}
+          height={clientHeight}
+          width={clientWidth}
+          {...rest}
+        />
       </div>
     );
   }
+
   return null;
 }
 
 Viewer.propTypes = {
-  geoAssets: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired
-};
-
-export default {
-  create({ container, ...rest }) {
-    const containerElem = document.querySelector(container);
-
-    ReactDOM.render(<Viewer {...rest} />, containerElem);
-  }
+  geoAssetsUrl: PropTypes.string.isRequired
 };

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "paths": {
+      "editor": ["src/editor/"],
+      "hooks": ["src/hooks/"],
+      "lib": ["src/lib/"],
+      "viewer": ["src/viewer/"],
+      "utils": ["src/utils/"],
+    }
+  }
+}

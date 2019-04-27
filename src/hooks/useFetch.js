@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export default function useFetch(url) {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
 
   async function fetchUrl() {
     const response = await fetch(url);
@@ -15,5 +15,5 @@ export default function useFetch(url) {
     fetchUrl();
   }, []);
 
-  return [data, loading];
+  return [data, isLoading];
 }

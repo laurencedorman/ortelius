@@ -296,13 +296,17 @@
 
   var map = Ortelius.create({
     container: '#root',
-    geoAssets: 'https://ec.europa.eu/eurostat/cache/GISCO/distribution/v2/nuts/topojson/NUTS_RG_60M_2013_4326_LEVL_2.json',
+    geoAssetsUrl: 'https://ec.europa.eu/eurostat/cache/GISCO/distribution/v2/nuts/topojson/NUTS_RG_60M_2013_4326_LEVL_2.json',
     zoom: true,
     panning: true,
     layers: [{
       type: 'choropleth',
       data: data,
       dataType: 'csv',
+      columnNames: {
+        id: 'ID',
+        value: 'Taux de chômage, différence entre 2016 et 2007 (en points de %)',
+      },
       scale: {}
     }]
   });

@@ -1,19 +1,17 @@
 import React from 'react';
-import { feature as topo2geo } from 'topojson';
-import { geoPath as d3GeoPath, geoMercator } from 'd3-geo';
+import PropTypes from 'prop-types';
+import { geoMercator } from 'd3-geo';
+
+import createGeoFeatures from 'utils/createGeoFeatures';
+import prepareGeoJson from 'utils/prepareGeoJson';
 
 import SvgContainer from './SvgContainer';
 import ZoomableGroup from './ZoomableGroup';
-
 import ChoroplethLayer from './ChoroplethLayer';
 
 const mapLayers = {
   choropleth: ChoroplethLayer
 };
-
-export function createGeoPath({ projection, width, height, geojson }) {
-  return d3GeoPath().projection(projection.fitExtent([[0, 0], [width, height]], geojson));
-}
 
 export function getDrawDims(height, width, margin) {
   return {
@@ -22,54 +20,56 @@ export function getDrawDims(height, width, margin) {
   };
 }
 
-const Map = ({
-  margin = 10,
+export default function Map({
+  margin,
   layers,
   zoom,
   panning,
-  topoJson,
+  geoDataType,
+  geoData,
   projection = geoMercator(),
   height: containerHeight,
   width: containerWidth
-}) => {
-  const topoJsonKey = Object.keys(topoJson.objects)[0];
-  const geojson = topo2geo(topoJson, topoJson.objects[topoJsonKey]);
+}) {
+  const geojson = prepareGeoJson(geoDataType, geoData);
 
   const { drawHeight, drawWidth } = getDrawDims(containerHeight, containerWidth, margin);
 
-  const geoPath = createGeoPath({
+  const geoPathParams = {
     height: drawHeight,
     width: drawWidth,
     geojson,
     projection
-  });
+  };
 
-  const features = geojson.features.map(feature => {
-    const { properties, id } = feature;
-
-    return {
-      id,
-      ...properties,
-      path: geoPath(feature),
-      bounds: geoPath.bounds(feature)
-    };
-  });
+  const geoFeatures = createGeoFeatures(geojson.features, geoPathParams);
 
   return (
     <SvgContainer margin={margin} height={containerHeight} width={containerWidth}>
       <ZoomableGroup>
-        {layers.map(({ type, ...rest }, index) => {
+        {layers.map(({ type, ...rest }) => {
           const Component = mapLayers[type];
 
           return React.createElement(Component, {
-            key: `${type}-${index}`,
-            features,
+            key: `${type}-${Date.now()}`,
+            geoFeatures,
             ...rest
           });
         })}
       </ZoomableGroup>
     </SvgContainer>
   );
+}
+
+Map.propTypes = {
+  margin: PropTypes.number,
+  layers: PropTypes.arrayOf(Object).isRequired,
+  panning: PropTypes.bool,
+  zoom: PropTypes.bool
 };
 
-export default Map;
+Map.defaultProps = {
+  margin: 10,
+  panning: true,
+  zoom: true
+};
