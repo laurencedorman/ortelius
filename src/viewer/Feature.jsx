@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Feature({ path, initialFill, stroke }) {
-  const [fill, setFill] = useState(initialFill);
+import { ZoomContext } from './ZoomableGroup';
+
+export default function Feature({ bounds, path, fillInitial, fillHover, stroke }) {
+  const [fill, setFill] = useState(fillInitial);
+  const { handleZoomClick } = useContext(ZoomContext);
 
   const onMouseEnter = e => {
     e.preventDefault();
 
-    setFill('yellow');
+    setFill(fillHover);
   };
 
   const onMouseLeave = e => {
     e.preventDefault();
 
-    setFill(initialFill);
+    setFill(fillInitial);
   };
 
   return (
@@ -23,22 +26,26 @@ export default function Feature({ path, initialFill, stroke }) {
       stroke={stroke}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
+      onClick={handleZoomClick.bind(null, bounds)}
     />
   );
 }
 
 Feature.propTypes = {
+  bounds: PropTypes.arrayOf(PropTypes.array).isRequired,
   data: PropTypes.shape({
     id: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   }),
-  initialFill: PropTypes.string,
+  fillHover: PropTypes.string,
+  fillInitial: PropTypes.string,
   path: PropTypes.string.isRequired,
   stroke: PropTypes.string
 };
 
 Feature.defaultProps = {
   data: null,
-  initialFill: '#ccc',
+  fillHover: 'yellow',
+  fillInitial: '#ccc',
   stroke: '#000'
 };

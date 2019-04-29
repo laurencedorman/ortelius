@@ -32,9 +32,9 @@ export default function ChoroplethLayer({ data: rawData, columnNames, dataType, 
   return (
     <g className="choropleth-layer">
       {joinedGeoFeatures.map(({ id, ...rest }) => {
-        const initialFill = rest.data && colorScale(rest.data.value);
+        const fillInitial = rest.data && colorScale(rest.data.value);
 
-        return <Feature key={id} {...rest} initialFill={initialFill} />;
+        return <Feature key={id} {...rest} fillInitial={fillInitial} />;
       })}
     </g>
   );

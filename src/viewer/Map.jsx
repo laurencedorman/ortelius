@@ -46,7 +46,7 @@ export default function Map({
 
   return (
     <SvgContainer margin={margin} height={containerHeight} width={containerWidth}>
-      <ZoomableGroup zoom={zoom} panning={panning}>
+      <ZoomableGroup height={containerHeight} width={containerWidth} zoom={zoom} panning={panning}>
         {layers.map(({ type, ...rest }) => {
           const Component = mapLayers[type];
 
@@ -62,7 +62,7 @@ export default function Map({
 }
 
 Map.propTypes = {
-  geoData: PropTypes.arrayOf(Object).isRequired,
+  geoData: PropTypes.oneOfType([PropTypes.arrayOf(Object), PropTypes.object]).isRequired,
   geoDataType: PropTypes.string,
   height: PropTypes.number.isRequired,
   layers: PropTypes.arrayOf(Object).isRequired,
