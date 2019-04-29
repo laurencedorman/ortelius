@@ -1,25 +1,36 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+
+import useFetch from 'hooks/useFetch';
+import fileExtension from 'utils/fileExtension';
 
 import Map from './Map';
 
-const create = ({ container, map: { src } }) => {
-  const containerElem = document.querySelector(container);
+import styles from './Viewer.module.scss';
+
+export default function Viewer(props) {
+  const { geoAssetsUrl, ...rest } = props;
 
   const { clientWidth, clientHeight } = document.documentElement;
+  const [fetchedData, isLoading] = useFetch(geoAssetsUrl);
 
-  fetch(src)
-    .then(res => res.json())
-    .then(geojson => {
-      ReactDOM.render(
-        <Map geojson={geojson} height={clientHeight} width={clientWidth} />,
-        containerElem
-      );
-    });
-};
+  if (!isLoading) {
+    return (
+      <div className={styles.Viewer}>
+        <Map
+          geoData={fetchedData}
+          geoDataType={fileExtension(geoAssetsUrl)}
+          height={clientHeight}
+          width={clientWidth}
+          {...rest}
+        />
+      </div>
+    );
+  }
 
-const Viewer = () => {};
+  return null;
+}
 
-export default {
-  create
+Viewer.propTypes = {
+  geoAssetsUrl: PropTypes.string.isRequired
 };

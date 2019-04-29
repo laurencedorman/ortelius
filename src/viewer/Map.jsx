@@ -1,37 +1,82 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { geoMercator } from 'd3-geo';
 
-import { geoPath, geoMercator } from 'd3-geo';
+import createGeoFeatures from 'utils/createGeoFeatures';
+import prepareGeoJson from 'utils/prepareGeoJson';
 
-import Feature from './Feature';
+import SvgContainer from './SvgContainer';
+import ZoomableGroup from './ZoomableGroup';
+import ChoroplethLayer from './ChoroplethLayer';
 
-const createGeoPath = ({ projection, width, height, geojson }) => {
-  return geoPath().projection(projection.fitExtent([[0, 0], [width, height]], geojson));
+const mapLayers = {
+  choropleth: ChoroplethLayer
 };
 
-const Map = ({ geojson, projection = geoMercator(), height, width }) => {
-  const path = createGeoPath({
-    width,
-    height,
+export function getDrawDims(height, width, margin) {
+  return {
+    drawHeight: height - margin * 2,
+    drawWidth: width - margin * 2
+  };
+}
+
+export default function Map({
+  margin,
+  layers,
+  zoom,
+  panning,
+  geoDataType,
+  geoData,
+  projection,
+  height: containerHeight,
+  width: containerWidth
+}) {
+  const geojson = prepareGeoJson(geoDataType, geoData);
+
+  const { drawHeight, drawWidth } = getDrawDims(containerHeight, containerWidth, margin);
+
+  const geoPathParams = {
+    height: drawHeight,
+    width: drawWidth,
     geojson,
     projection
-  });
+  };
 
-  const paths = geojson.features.map(feature => ({
-    d: path(feature),
-    bounds: path.bounds(feature)
-  }));
+  const geoFeatures = createGeoFeatures(geojson.features, geoPathParams);
 
   return (
-    <div>
-      <svg width={width} height={height}>
-        <g>
-          {paths.map(({ bounds, d }) => (
-            <Feature bounds={bounds} key={d} path={d} />
-          ))}
-        </g>
-      </svg>
-    </div>
+    <SvgContainer margin={margin} height={containerHeight} width={containerWidth}>
+      <ZoomableGroup height={containerHeight} width={containerWidth} zoom={zoom} panning={panning}>
+        {layers.map(({ type, ...rest }) => {
+          const Component = mapLayers[type];
+
+          return React.createElement(Component, {
+            key: `${type}-${Date.now()}`,
+            geoFeatures,
+            ...rest
+          });
+        })}
+      </ZoomableGroup>
+    </SvgContainer>
   );
+}
+
+Map.propTypes = {
+  geoData: PropTypes.oneOfType([PropTypes.arrayOf(Object), PropTypes.object]).isRequired,
+  geoDataType: PropTypes.string,
+  height: PropTypes.number.isRequired,
+  layers: PropTypes.arrayOf(Object).isRequired,
+  margin: PropTypes.number,
+  panning: PropTypes.bool,
+  projection: PropTypes.func,
+  width: PropTypes.number.isRequired,
+  zoom: PropTypes.bool
 };
 
-export default Map;
+Map.defaultProps = {
+  geoDataType: 'json',
+  margin: 10,
+  panning: true,
+  projection: geoMercator(),
+  zoom: true
+};
