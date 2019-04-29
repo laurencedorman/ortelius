@@ -1,4 +1,7 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isDevelopment = true;
 
 module.exports = {
   entry: './src/viewer/index',
@@ -9,6 +12,12 @@ module.exports = {
     libraryExport: 'default',
     library: 'Ortelius'
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+    })
+  ],
   devServer: {
     contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'static')],
     compress: true,
@@ -26,14 +35,19 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
+        test: /\.scss$/,
+        loader: [
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              modules: true
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+              camelCase: true
             }
+          },
+          {
+            loader: 'sass-loader' // compiles Sass to CSS, using Node Sass by default
           }
         ]
       },
@@ -44,7 +58,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.scss'],
     alias: {
       editor: path.resolve(__dirname, 'src/editor/'),
       hooks: path.resolve(__dirname, 'src/hooks/'),
