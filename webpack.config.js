@@ -47,7 +47,7 @@ module.exports = {
             }
           },
           {
-            loader: 'sass-loader' // compiles Sass to CSS, using Node Sass by default
+            loader: 'sass-loader'
           }
         ]
       },
