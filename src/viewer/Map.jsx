@@ -25,14 +25,13 @@ export default function Map({
   layers,
   zoom,
   panning,
-  geoDataType,
-  geoData,
+  geoAssetsType,
+  geoAssets,
   projection,
   height: containerHeight,
   width: containerWidth
 }) {
-  const geojson = prepareGeoJson(geoDataType, geoData);
-
+  const geojson = prepareGeoJson(geoAssetsType, geoAssets);
   const { drawHeight, drawWidth } = getDrawDims(containerHeight, containerWidth, margin);
 
   const geoPathParams = {
@@ -51,7 +50,7 @@ export default function Map({
           const Component = mapLayers[type];
 
           return React.createElement(Component, {
-            key: `${type}-${Date.now()}`,
+            key: Date.now(),
             geoFeatures,
             ...rest
           });
@@ -62,8 +61,8 @@ export default function Map({
 }
 
 Map.propTypes = {
-  geoData: PropTypes.oneOfType([PropTypes.arrayOf(Object), PropTypes.object]).isRequired,
-  geoDataType: PropTypes.string,
+  geoAssets: PropTypes.oneOfType([PropTypes.arrayOf(Object), PropTypes.object]).isRequired,
+  geoAssetsType: PropTypes.string,
   height: PropTypes.number.isRequired,
   layers: PropTypes.arrayOf(Object).isRequired,
   margin: PropTypes.number,
@@ -74,7 +73,7 @@ Map.propTypes = {
 };
 
 Map.defaultProps = {
-  geoDataType: 'json',
+  geoAssetsType: 'json',
   margin: 10,
   panning: true,
   projection: geoMercator(),

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import createColorScale from 'utils/createColorScale';
-import prepareData from 'utils/prepareData';
 
 import Feature from './Feature';
 
@@ -23,8 +22,7 @@ export function joinDataToFeatures(geoFeatures, data) {
   });
 }
 
-export default function ChoroplethLayer({ data: rawData, columnNames, dataType, geoFeatures }) {
-  const data = prepareData(dataType, columnNames, rawData);
+export default function ChoroplethLayer({ data, geoFeatures }) {
   const colorScale = createColorScale(data);
 
   const joinedGeoFeatures = joinDataToFeatures(geoFeatures, data);
@@ -42,18 +40,7 @@ export default function ChoroplethLayer({ data: rawData, columnNames, dataType, 
 
 ChoroplethLayer.propTypes = {
   data: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
-  dataType: PropTypes.string,
-  columnNames: PropTypes.shape({
-    id: PropTypes.string,
-    value: PropTypes.string
-  }),
   geoFeatures: PropTypes.arrayOf(Object).isRequired
 };
 
-ChoroplethLayer.defaultProps = {
-  dataType: 'csv',
-  columnNames: {
-    id: 'id',
-    value: 'value'
-  }
-};
+ChoroplethLayer.defaultProps = {};
