@@ -1,28 +1,29 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useSpring, animated } from 'react-spring';
 
 import { ZoomContext } from './ZoomableGroup';
 
-export default function Feature({ bounds, path, fillInitial, fillHover, stroke }) {
-  const [fill, setFill] = useState(fillInitial);
+export function Feature({ bounds, path, fillInitial, fillHover, stroke }) {
+  const [props, setFill] = useSpring(() => ({ fill: fillInitial }));
   const { handleZoomClick } = useContext(ZoomContext);
 
   const onMouseEnter = e => {
     e.preventDefault();
 
-    setFill(fillHover);
+    setFill({ fill: fillHover });
   };
 
   const onMouseLeave = e => {
     e.preventDefault();
 
-    setFill(fillInitial);
+    setFill({ fill: fillInitial });
   };
 
   return (
-    <path
+    <animated.path
       d={path}
-      fill={fill}
+      style={props}
       stroke={stroke}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
@@ -30,6 +31,8 @@ export default function Feature({ bounds, path, fillInitial, fillHover, stroke }
     />
   );
 }
+
+export default React.memo(Feature);
 
 Feature.propTypes = {
   bounds: PropTypes.arrayOf(PropTypes.array).isRequired,
