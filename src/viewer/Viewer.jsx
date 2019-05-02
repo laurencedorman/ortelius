@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import useFetch from 'hooks/useFetch';
@@ -9,6 +9,25 @@ import Map from './Map';
 
 import styles from './Viewer.module.scss';
 
+function hydrateLayers(layers, fetchedStatData) {
+  return layers.map(layer => {
+    const {
+      columnNames,
+      data: { type }
+    } = layer;
+    let data;
+
+    if (fetchedStatData && fetchedStatData.length > 0) {
+      data = fetchedStatData.pop();
+    }
+
+    return {
+      id: `layer-${Date.now()}`,
+      ...layer,
+      data: prepareData(type, columnNames, data)
+    };
+  });
+}
 export default function Viewer(props) {
   const { geoAssetsUrl, layers, ...rest } = props;
 
@@ -18,26 +37,12 @@ export default function Viewer(props) {
 
   const [[geoAssets, ...fetchedStatData], isLoading] = useFetch([geoAssetsUrl, ...statDataToFetch]);
 
+  const hydratedLayers = useMemo(() => {
+    return hydrateLayers(layers, fetchedStatData);
+  }, [layers, fetchedStatData]);
+
+
   if (!isLoading) {
-    const enrichedLayers = layers.map(layer => {
-      const {
-        columnNames,
-        data: { type }
-      } = layer;
-      let {
-        data: { raw }
-      } = layer;
-
-      if (!raw && fetchedStatData && fetchedStatData.length > 0) {
-        raw = fetchedStatData.pop();
-      }
-
-      return {
-        ...layer,
-        data: prepareData(type, columnNames, raw)
-      };
-    });
-
     return (
       <div className={styles.Viewer}>
         <Map
@@ -45,7 +50,7 @@ export default function Viewer(props) {
           geoAssetsType={fileExtension(geoAssetsUrl)}
           height={clientHeight}
           width={clientWidth}
-          layers={enrichedLayers}
+          layers={hydratedLayers}
           {...rest}
         />
       </div>
