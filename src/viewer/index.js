@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Viewer from './Viewer';
+import SimpleMap from './SimpleMap';
+
+const mapFactory = Factory => ({ container, ...rest }) => {
+  const containerElem = document.querySelector(container);
+
+  ReactDOM.render(
+    React.createElement(Factory, {
+      ...rest
+    }),
+    containerElem
+  );
+};
 
 export default {
-  create({ container, ...rest }) {
-    const containerElem = document.querySelector(container);
-
-    ReactDOM.render(
-      React.createElement(Viewer, {
-        ...rest
-      }),
-      containerElem
-    );
-  }
+  createSimpleMap: mapFactory(SimpleMap)
+  // createStoryMap: mapFactory(StoryMap)
 };

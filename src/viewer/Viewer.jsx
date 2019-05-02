@@ -28,6 +28,7 @@ function hydrateLayers(layers, fetchedStatData) {
     };
   });
 }
+
 export default function Viewer(props) {
   const { geoAssetsUrl, layers, ...rest } = props;
 
@@ -40,7 +41,6 @@ export default function Viewer(props) {
   const hydratedLayers = useMemo(() => {
     return hydrateLayers(layers, fetchedStatData);
   }, [layers, fetchedStatData]);
-
 
   if (!isLoading) {
     return (
