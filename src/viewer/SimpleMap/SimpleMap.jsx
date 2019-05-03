@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { geoMercator } from 'd3-geo';
 
 import GeoFeaturesProvider from 'viewer/shared/GeoFeaturesProvider';
-import LayersProvider from 'viewer/shared/LayersProvider';
-import Layer from 'viewer/shared/Layer';
+import LayersProvider from 'viewer/layers/LayersProvider';
+import Layer from 'viewer/layers/Layer';
 import Legend from 'viewer/shared/Legend';
 import Toolbar from 'viewer/shared/Toolbar';
 import SvgContainer from 'viewer/shared/SvgContainer';
@@ -18,7 +18,7 @@ export function getDrawDims(height, width, margin = 10) {
   };
 }
 
-export default function SimpleMap({ margin, geoAssetsUrl, layers: layersConfig }) {
+export default function SimpleMap({ margin = 10, geoAssetsUrl, layers: layersConfig }) {
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin);
 
@@ -28,18 +28,24 @@ export default function SimpleMap({ margin, geoAssetsUrl, layers: layersConfig }
       width={drawWidth}
       projection={geoMercator()}
       url={geoAssetsUrl}
-      render={({ geoFeatures }) => {
-        return (
-          <LayersProvider
-            geoFeatures={geoFeatures}
-            config={layersConfig}
-            render={({ layers }) => {
-              console.log('hii');
-              return <div>hi</div>;
-            }}
-          />
-        );
-      }}
+      render={({ geoFeatures }) => (
+        <LayersProvider
+          config={layersConfig}
+          render={({ layers }) => (
+            <Fragment>
+              <SvgContainer margin={margin} height={drawHeight} width={drawWidth}>
+                <ZoomableGroup height={drawHeight} width={drawWidth}>
+                  {layers.map((layer, index) => (
+                    <Layer key={layer.id} index={index} geoFeatures={geoFeatures} {...layer} />
+                  ))}
+                </ZoomableGroup>
+              </SvgContainer>
+              <Legend />
+              <Toolbar />
+            </Fragment>
+          )}
+        />
+      )}
     />
   );
 }

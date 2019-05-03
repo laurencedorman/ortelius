@@ -42,7 +42,7 @@ export default class LayerProvider extends React.PureComponent {
       } = configItem;
 
       return {
-        id: `layer-${Date.now()}`,
+        id: 'layer-' + Date.now(),
         ...configItem,
         data: prepareData(type, columnNames, rawCSV)
       };
@@ -50,7 +50,7 @@ export default class LayerProvider extends React.PureComponent {
   }
 
   render() {
-    const { geoFeatures, config, render } = this.props;
+    const { render } = this.props;
     const { isLoading, layers } = this.state;
 
     if (isLoading) {

@@ -4,9 +4,9 @@
   "description": "a tool for making good-looking maps",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --mode=development",
     "eslint": "eslint --ext js,jsx src",
-    "start": "webpack"
+    "build": "webpack --mode=production"
   },
   "repository": {
     "type": "git",
