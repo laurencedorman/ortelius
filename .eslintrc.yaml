@@ -9,7 +9,7 @@ plugins:
 rules:
   prettier/prettier:
     - error
-  babel/semi: true
+  babel/semi: 0
 
 env:
   browser: true
