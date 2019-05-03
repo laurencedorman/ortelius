@@ -1,8 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isDevelopment = true;
-
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
   const config = {

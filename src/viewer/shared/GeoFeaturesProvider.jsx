@@ -5,7 +5,7 @@ import createGeoFeatures from 'utils/createGeoFeatures';
 import prepareGeoJson from 'utils/prepareGeoJson';
 
 export default class GeoFeaturesProvider extends React.PureComponent {
-  static propTypes = {
+  propTypes = {
     url: PropTypes.string.isRequired,
     render: PropTypes.func.isRequired
   };
