@@ -14,8 +14,8 @@ export default class LayerProvider extends React.PureComponent {
   }
 
   async componentDidMount() {
-    const { config } = this.props;
-    const urls = config
+    const { layerConfig } = this.props;
+    const urls = layerConfig
       .map(configItem => configItem.data && configItem.data.url)
       .filter(url => url);
 
@@ -23,7 +23,7 @@ export default class LayerProvider extends React.PureComponent {
       urls.map(async url => fetch(url).then(response => response.text()))
     );
 
-    const layers = this.hydrateConfig(rawCSVArray);
+    const layers = this.hydrateLayerConfig(rawCSVArray);
 
     this.setState({
       isLoading: false,
@@ -31,10 +31,10 @@ export default class LayerProvider extends React.PureComponent {
     });
   }
 
-  hydrateConfig(rawCSVArray) {
-    const { config } = this.props;
+  hydrateLayerConfig(rawCSVArray) {
+    const { layerConfig } = this.props;
 
-    return config.map(configItem => {
+    return layerConfig.map(configItem => {
       const {
         columnNames,
         data: { type },

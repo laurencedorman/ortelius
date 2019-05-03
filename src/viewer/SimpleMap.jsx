@@ -18,7 +18,7 @@ export function getDrawDims(height, width, margin = 10) {
   };
 }
 
-export default function SimpleMap({ margin = 10, geoAssetsUrl, layers: layersConfig }) {
+export default function SimpleMap({ margin = 10, geoAssetsUrl, layers: layerConfig }) {
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin);
 
@@ -30,7 +30,7 @@ export default function SimpleMap({ margin = 10, geoAssetsUrl, layers: layersCon
       url={geoAssetsUrl}
       render={({ geoFeatures }) => (
         <LayersProvider
-          config={layersConfig}
+          layerConfig={layerConfig}
           render={({ layers }) => (
             <Fragment>
               <SvgContainer margin={margin} height={drawHeight} width={drawWidth}>
