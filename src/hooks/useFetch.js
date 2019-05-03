@@ -1,39 +1,34 @@
 import { useState, useEffect } from 'react';
 
-import fileExtension from 'utils/fileExtension';
-
-async function fetchUrls(urls, cb) {
-  const data = await Promise.all(
-    urls.map(async url =>
-      fetch(url).then(response => {
-        let ext;
-
-        if (response && response.url) {
-          ext = fileExtension(response.url);
-        }
-
-        if (ext === 'json' || ext === 'geojson') {
-          return response.json();
-        }
-
-        return response.text();
-      })
-    )
-  );
-
-  cb(data);
-}
-
-export default function useFetch(urls) {
+export default function useFetch(urls, type = 'json') {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [hasError, setError] = useState(null);
+
+  async function fetchData() {
+    try {
+      const fetchedData = await Promise.all(
+        urls.map(async url =>
+          fetch(url).then(response => {
+            if (type === 'json') {
+              return response.json();
+            }
+
+            return response.text();
+          })
+        )
+      );
+      setData(fetchedData);
+    } catch (e) {
+      setError(e);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
-    fetchUrls(urls, fetchedData => {
-      setData(fetchedData);
-      setLoading(false);
-    });
-  }, []);
+    fetchData(urls);
+  }, [urls]);
 
-  return [data, isLoading];
+  return [data, isLoading, hasError];
 }

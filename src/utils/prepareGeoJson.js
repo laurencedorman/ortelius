@@ -9,6 +9,7 @@ export default function prepareGeoJson(ext, fetchedData) {
     geoJson = topo2geo(fetchedData, fetchedData.objects[topoJsonKey]);
   }
 
+  // TODO REMOVE
   geoJson.features = geoJson.features.filter(feature => {
     return (
       feature.properties.NUTS_ID.indexOf('FRA') === -1 &&

@@ -4,10 +4,12 @@ extends:
 
 plugins:
   - prettier
+  - babel
 
 rules:
   prettier/prettier:
     - error
+  babel/semi: true
 
 env:
   browser: true
