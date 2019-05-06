@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/javascript" src="./main.js"></script>
+<script>
+  var map = Ortelius.createStoryMap({
+    container: '#root',
+    geoAssetsUrl: 'https://ec.europa.eu/eurostat/cache/GISCO/distribution/v2/nuts/topojson/NUTS_RG_60M_2013_4326_LEVL_2.json',
+    zoom: true,
+    panning: true,
+    layers: [{
+      type: 'choropleth',
+      data: {
+        url: './data-timeline.csv',
+        type: 'csv'
+      },
+      columnNames: {
+        id: 'ID',
+        values: ['2007', '2008'],
+      },
+      scale: {}
+    }]
+  });
+</script>
+
+</html>
