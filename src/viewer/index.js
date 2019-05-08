@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import SimpleMap from './SimpleMap';
-import StoryMap from './StoryMap';
+import DynamicMap from './DynamicMap';
 
 const mapFactory = Factory => ({ container, ...rest }) => {
   const containerElem = document.querySelector(container);
@@ -17,5 +17,5 @@ const mapFactory = Factory => ({ container, ...rest }) => {
 
 export default {
   createSimpleMap: mapFactory(SimpleMap),
-  createStoryMap: mapFactory(StoryMap)
+  createDynamicMap: mapFactory(DynamicMap)
 };

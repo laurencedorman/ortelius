@@ -5,9 +5,14 @@ import createGeoFeatures from 'utils/createGeoFeatures';
 import prepareGeoJson from 'utils/prepareGeoJson';
 
 export default class GeoFeaturesProvider extends React.PureComponent {
-  propTypes = {
+  static propTypes = {
     url: PropTypes.string.isRequired,
-    render: PropTypes.func.isRequired
+    render: PropTypes.func.isRequired,
+    filter: PropTypes.func
+  };
+
+  static defaultProps = {
+    filter: geoJson => geoJson
   };
 
   constructor(props) {
@@ -20,13 +25,13 @@ export default class GeoFeaturesProvider extends React.PureComponent {
   }
 
   async componentDidMount() {
-    const { url, height, width, projection } = this.props;
+    const { url, height, width, projection, filter } = this.props;
 
     const geoFeatures = await fetch(url)
       .then(response => response.json())
       .then(geoAssets => {
         const geoAssetsType = 'json';
-        const geojson = prepareGeoJson(geoAssetsType, geoAssets);
+        const geojson = prepareGeoJson(geoAssetsType, geoAssets, filter);
 
         const geoPathParams = {
           height,

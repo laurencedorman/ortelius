@@ -11,14 +11,14 @@ import Toolbar from 'viewer/shared/Toolbar';
 import SvgContainer from 'viewer/shared/SvgContainer';
 import ZoomableGroup from 'viewer/shared/ZoomableGroup';
 
-export function getDrawDims(height, width, margin = 10) {
-  return {
-    drawHeight: height - margin * 2,
-    drawWidth: width - margin * 2
-  };
-}
+import getDrawDims from 'utils/getDrawDims';
 
-export default function SimpleMap({ margin = 10, geoAssetsUrl, layers: layerConfig }) {
+export default function SimpleMap({
+  margin = 10,
+  geoAssetsUrl,
+  geoAssetFilter,
+  layers: layerConfig
+}) {
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin);
 
@@ -28,6 +28,7 @@ export default function SimpleMap({ margin = 10, geoAssetsUrl, layers: layerConf
       width={drawWidth}
       projection={geoMercator()}
       url={geoAssetsUrl}
+      filter={geoAssetFilter}
       render={({ geoFeatures }) => (
         <LayersProvider
           layerConfig={layerConfig}
