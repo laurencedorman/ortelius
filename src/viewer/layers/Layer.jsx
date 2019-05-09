@@ -8,7 +8,7 @@ import Feature from 'viewer/shared/Feature';
 import Choropleth from './Choropleth';
 
 export default class Layer extends React.PureComponent {
-  layerTypes = {
+  static types = {
     CHOROPLETH: 'CHOROPLETH',
     BUBBLE: 'BUBBLE',
     LINE: 'LINE',
@@ -45,6 +45,27 @@ export default class Layer extends React.PureComponent {
     return this.private.dataById;
   }
 
+  static getInnerLayer(type) {
+    switch (true) {
+      case type === Layer.types.CHOROPLETH:
+        return Choropleth;
+      case type === Layer.types.BUBBLE:
+        break;
+      case type === Layer.types.LINE:
+        break;
+      case type === Layer.types.HEXBIN:
+        break;
+      case type === Layer.types.AREA:
+        break;
+      case type === Layer.types.POINT:
+        break;
+      case type === Layer.types.ANNOTATION:
+        break;
+      default:
+        throw new TypeError(`Failed to find layer of type ${type}`);
+    }
+  }
+
   joinDataToFeatures(geoFeatures, data) {
     return geoFeatures.map(({ id, ...rest }) => {
       return {
@@ -55,31 +76,10 @@ export default class Layer extends React.PureComponent {
     });
   }
 
-  getInnerLayer(type) {
-    switch (true) {
-      case type === this.layerTypes.CHOROPLETH:
-        return Choropleth;
-      case type === this.layerTypes.BUBBLE:
-        break;
-      case type === this.layerTypes.LINE:
-        break;
-      case type === this.layerTypes.HEXBIN:
-        break;
-      case type === this.layerTypes.AREA:
-        break;
-      case type === this.layerTypes.POINT:
-        break;
-      case type === this.layerTypes.ANNOTATION:
-        break;
-      default:
-        throw new TypeError(`Failed to find layer of type ${type}`);
-    }
-  }
-
   render() {
     const { type, data } = this.props;
 
-    const InnerLayer = this.getInnerLayer(type.toUpperCase());
+    const InnerLayer = Layer.getInnerLayer(type.toUpperCase());
 
     return (
       <g className="map-layer">

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { geoMercator } from 'd3-geo';
 
-import GeoFeaturesProvider from 'viewer/shared/GeoFeaturesProvider';
+import GeoAssetsProvider from 'viewer/shared/GeoAssetsProvider';
 import LayersProvider from 'viewer/layers/LayersProvider';
 import Layer from 'viewer/layers/Layer';
 import Legend from 'viewer/shared/Legend';
@@ -13,22 +13,16 @@ import ZoomableGroup from 'viewer/shared/ZoomableGroup';
 
 import getDrawDims from 'utils/getDrawDims';
 
-export default function SimpleMap({
-  margin = 10,
-  geoAssetsUrl,
-  geoAssetFilter,
-  layers: layerConfig
-}) {
+export default function SimpleMap({ margin = 10, geoAssets, layers: layerConfig }) {
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin);
 
   return (
-    <GeoFeaturesProvider
+    <GeoAssetsProvider
       height={drawHeight}
       width={drawWidth}
       projection={geoMercator()}
-      url={geoAssetsUrl}
-      filter={geoAssetFilter}
+      {...geoAssets}
       render={({ geoFeatures }) => (
         <LayersProvider
           layerConfig={layerConfig}
