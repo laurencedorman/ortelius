@@ -4,13 +4,17 @@ extends:
 
 plugins:
   - prettier
+  - babel
 
 rules:
   prettier/prettier:
     - error
+  import/no-unamed-as-default: 0
 
 env:
   browser: true
+
+parser: 'babel-eslint'
 
 settings:
   import/resolver:

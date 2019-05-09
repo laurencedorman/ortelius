@@ -1,6 +1,6 @@
 import { feature as topo2geo } from 'topojson';
 
-export default function prepareGeoJson(ext, fetchedData) {
+export default function prepareGeoJson(ext, fetchedData, filter) {
   let geoJson = fetchedData;
 
   if (ext === 'json') {
@@ -9,14 +9,7 @@ export default function prepareGeoJson(ext, fetchedData) {
     geoJson = topo2geo(fetchedData, fetchedData.objects[topoJsonKey]);
   }
 
-  geoJson.features = geoJson.features.filter(feature => {
-    return (
-      feature.properties.NUTS_ID.indexOf('FRA') === -1 &&
-      feature.properties.NUTS_ID.indexOf('CY') === -1 &&
-      !['IS00', 'ES70', 'PT20', 'PT30'].includes(feature.properties.NUTS_ID) &&
-      feature.properties.NUTS_ID.indexOf('TR') === -1
-    );
-  });
+  geoJson = filter(geoJson);
 
   return geoJson;
 }
