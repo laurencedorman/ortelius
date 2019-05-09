@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { geoPath } from 'd3-geo';
 
-import createGeoFeatures from 'utils/createGeoFeatures';
+import fileExtension from 'utils/fileExtension';
 import prepareGeoJson from 'utils/prepareGeoJson';
 
-export default class GeoFeaturesProvider extends React.PureComponent {
+export default class GeographyProvider extends React.PureComponent {
   static propTypes = {
     url: PropTypes.string.isRequired,
     render: PropTypes.func.isRequired,
@@ -20,43 +21,40 @@ export default class GeoFeaturesProvider extends React.PureComponent {
 
     this.state = {
       isLoading: true,
-      geoFeatures: []
+      geographies: [],
+      path: null,
+      projection: null
     };
   }
 
   async componentDidMount() {
     const { url, height, width, projection, filter } = this.props;
 
-    const geoFeatures = await fetch(url)
+    const geojson = await fetch(url)
       .then(response => response.json())
       .then(geoAssets => {
-        const geoAssetsType = 'json';
-        const geojson = prepareGeoJson(geoAssetsType, geoAssets, filter);
-
-        const geoPathParams = {
-          height,
-          width,
-          geojson,
-          projection
-        };
-
-        return createGeoFeatures(geojson.features, geoPathParams);
+        return prepareGeoJson(fileExtension(url), geoAssets, filter);
       });
+
+    const geoProjection = projection.fitSize([width, height], geojson);
 
     this.setState({
       isLoading: false,
-      geoFeatures
+      geographies: geojson.features,
+      projection: geoProjection.precision(0.5),
+      // projection: geoProjection,
+      path: geoPath(geoProjection)
     });
   }
 
   render() {
-    const { isLoading, geoFeatures } = this.state;
+    const { isLoading, geographies, projection, path } = this.state;
     const { render } = this.props;
 
     if (isLoading) {
-      return <div>Loading GeoFeatures</div>;
+      return <div>Loading Geographies</div>;
     }
 
-    return render({ geoFeatures });
+    return render({ geographies, projection, path });
   }
 }

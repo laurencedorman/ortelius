@@ -1,4 +1,4 @@
-import { feature as topo2geo } from 'topojson';
+import * as topojson from 'topojson';
 
 export default function prepareGeoJson(ext, fetchedData, filter) {
   let geoJson = fetchedData;
@@ -6,7 +6,7 @@ export default function prepareGeoJson(ext, fetchedData, filter) {
   if (ext === 'json') {
     const topoJsonKey = Object.keys(fetchedData.objects)[0];
 
-    geoJson = topo2geo(fetchedData, fetchedData.objects[topoJsonKey]);
+    geoJson = topojson.feature(fetchedData, fetchedData.objects[topoJsonKey]);
   }
 
   geoJson = filter(geoJson);

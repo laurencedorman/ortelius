@@ -38,7 +38,8 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-spring": "^8.0.5",
-    "topojson": "^3.0.2"
+    "topojson": "^3.0.2",
+    "topojson-client": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
