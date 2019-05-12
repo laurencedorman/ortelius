@@ -1,6 +1,6 @@
 import { csvParse } from 'd3-dsv';
 
-function castToFloat(valueToCast, idKey) {
+export function castToFloat(valueToCast, idKey) {
   try {
     const value = parseFloat(valueToCast);
 

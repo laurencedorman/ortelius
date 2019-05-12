@@ -4,7 +4,9 @@ import { useSpring, animated } from 'react-spring';
 
 import { ZoomContext } from './ZoomableGroup';
 
-export function Feature({ bounds, path, fillInitial, fillHover, stroke }) {
+import styles from './Geography.module';
+
+export function Geography({ path, projection, fillInitial, fillHover, stroke, geography }) {
   const [props, setFill] = useSpring(() => ({ fill: fillInitial }));
   const { handleZoomClick } = useContext(ZoomContext);
 
@@ -20,9 +22,13 @@ export function Feature({ bounds, path, fillInitial, fillHover, stroke }) {
     setFill({ fill: fillInitial });
   };
 
+  const drawn = path(geography);
+  const bounds = path.bounds(geography);
+
   return (
     <animated.path
-      d={path}
+      d={drawn}
+      className={styles.Geography}
       style={props}
       stroke={stroke}
       onMouseLeave={onMouseLeave}
@@ -32,23 +38,23 @@ export function Feature({ bounds, path, fillInitial, fillHover, stroke }) {
   );
 }
 
-export default React.memo(Feature);
+export default React.memo(Geography);
 
-Feature.propTypes = {
-  bounds: PropTypes.arrayOf(PropTypes.array).isRequired,
+Geography.propTypes = {
+  // bounds: PropTypes.arrayOf(PropTypes.array).isRequired,
   data: PropTypes.shape({
     id: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   }),
   fillHover: PropTypes.string,
   fillInitial: PropTypes.string,
-  path: PropTypes.string.isRequired,
+  // path: PropTypes.string.isRequired,
   stroke: PropTypes.string
 };
 
-Feature.defaultProps = {
+Geography.defaultProps = {
   data: null,
-  fillHover: 'yellow',
+  fillHover: '#fafa',
   fillInitial: '#ccc',
   stroke: '#000'
 };

@@ -80,15 +80,15 @@ EL30,Attiki,15.20
 EL41,Voreio Aigaio,10.20
 EL42,Notio Aigaio,8.10
 EL43,Kriti,17.20
-EL11,"Anatoliki Makedonia, Thraki",12.90
-EL12,Kentriki Makedonia,15.40
-EL13,Dytiki Makedonia,19.20
-EL21,Ipeiros,14.40
-EL14,Thessalia,17.70
-EL22,Ionia Nisia,7.00
-EL23,Dytiki Ellada,19.90
-EL24,Sterea Ellada,15.60
-EL25,Peloponnisos,11.80
+EL51,"Anatoliki Makedonia, Thraki",12.90
+EL52,Kentriki Makedonia,15.40
+EL53,Dytiki Makedonia,19.20
+EL54,Ipeiros,14.40
+EL61,Thessalia,17.70
+EL62,Ionia Nisia,7.00
+EL63,Dytiki Ellada,19.90
+EL64,Sterea Ellada,15.60
+EL65,Peloponnisos,11.80
 ES11,Galicia,9.60
 ES12,Principado de Asturias,9.20
 ES13,Cantabria,8.90
@@ -135,9 +135,8 @@ FR72,Auvergne,-1.10
 FR81,Languedoc-Roussillon,1.90
 FR82,Provence-Alpes-Côte d'Azur,1.60
 FR83,Corse,-2.50
-HR01,"Kontinentalna Hrvatska, a",2.30
-HR02,"Kontinentalna Hrvatska, b",2.30
 HR03,Jadranska Hrvatska,5.00
+HR04,Kontinentalna Hrvatska,2.30
 HU10,Közép-Magyarország,-1.00
 HU21,Közép-Dunántúl,-1.90
 HU22,Nyugat-Dunántúl,-2.40
@@ -229,8 +228,8 @@ SE23,Västsverige,0.60
 SE31,Norra Mellansverige,1.20
 SE32,Mellersta Norrland,0.50
 SE33,Övre Norrland,-1.00
-SI01,Vzhodna Slovenija,1.10
-SI02,Zahodna Slovenija,0.50
+SI03,Vzhodna Slovenija,1.10
+SI04,Zahodna Slovenija,0.50
 SK01,Bratislavský kraj,0.80
 SK02,Západné Slovensko,-0.10
 SK03,Stredné Slovensko,-4.50
@@ -270,5 +269,8 @@ UKM3,South Western Scotland,0.30
 UKM5,North Eastern Scotland,1.70
 UKM6,Highlands and Islands,2.50
 UKN0,Northern Ireland (UK),1.80
-UKI1,Inner London,-3.50
-UKI2,Outer London,-3.60
+UKI3,Inner London - West,-3.50
+UKI4,Inner London - East,-3.50
+UKI5,Outer London - East and North East,-3.60
+UKI6,Outer London - South,-3.60
+UKI7,Outer London - West and North West,-3.60
