@@ -1,15 +1,24 @@
-import { scaleLinear } from 'd3-scale';
+import { scaleLinear, scaleThreshold } from 'd3-scale';
 import { interpolateViridis } from 'd3-scale-chromatic';
 
-export default function createColorScale(data) {
-  const scaleData = data.map(datum => datum.value);
+export default function createColorScale(
+  config = { type: 'linear', range: [interpolateViridis(0), interpolateViridis(1)] },
+  dataById
+) {
+  const { type } = config;
 
-  const min = Math.min(...scaleData);
-  const max = Math.max(...scaleData);
+  if (type === 'linear') {
+    const scaleData = Object.values(dataById).map(datum => datum.value);
 
-  const scale = scaleLinear()
-    .domain([min, max])
-    .range([interpolateViridis(0), interpolateViridis(1)]);
+    const min = Math.min(...scaleData);
+    const max = Math.max(...scaleData);
 
-  return scale;
+    return scaleLinear()
+      .domain([min, max])
+      .range([interpolateViridis(0), interpolateViridis(1)]);
+  } else if (type === 'threshold') {
+    return scaleThreshold()
+      .domain(config.domain)
+      .range(config.range);
+  }
 }

@@ -54,7 +54,7 @@ Geography.propTypes = {
 
 Geography.defaultProps = {
   data: null,
-  fillHover: 'yellow',
+  fillHover: '#fafa',
   fillInitial: '#ccc',
   stroke: '#000'
 };
