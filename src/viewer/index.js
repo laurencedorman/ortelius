@@ -3,22 +3,24 @@ import ReactDOM from 'react-dom';
 
 import { csvParse } from 'd3-dsv';
 
-import SimpleMap from './SimpleMap';
-// import DynamicMap from './DynamicMap';
-
-const mapFactory = Factory => ({ container, ...rest }) => {
-  const containerElem = document.querySelector(container);
-
-  ReactDOM.render(
-    React.createElement(Factory, {
-      ...rest
-    }),
-    containerElem
-  );
-};
+import Choropleth from './Choropleth';
 
 export default {
-  createSimpleMap: mapFactory(SimpleMap),
+  createMap: ({ container, type, ...rest }) => {
+    const containerElem = document.querySelector(container);
+    let Factory;
+
+    if (type === 'choropleth') {
+      Factory = Choropleth;
+    }
+
+    ReactDOM.render(
+      React.createElement(Factory, {
+        ...rest
+      }),
+      containerElem
+    );
+  },
   fetchCSV: async urls => {
     const rawCSV = await Promise.all(urls.map(url => fetch(url).then(response => response.text())));
 

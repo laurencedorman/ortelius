@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/javascript" src="./main.js"></script>
+<script>
+  var map = Ortelius.fetchCSV(['./data.csv']).then(data => {
+    return Ortelius.createMap({
+      container: '#root',
+      type: 'choropleth',
+      geoAssets: {
+        url: 'https://ec.europa.eu/eurostat/cache/GISCO/distribution/v2/nuts/topojson/NUTS_RG_60M_2013_4326_LEVL_2.json',
+        filter: geoJson => {
+          geoJson.features = geoJson.features.filter(feature => {
+            return (
+              feature.properties.NUTS_ID.indexOf('FRA') === -1 &&
+              feature.properties.NUTS_ID.indexOf('CY') === -1 &&
+              feature.properties.NUTS_ID.indexOf('CH') === -1 &&
+              !['DEC0', 'ME00', 'MK00', 'IS00', 'ES70', 'PT20', 'PT30'].includes(
+                feature.properties.NUTS_ID
+              ) &&
+              feature.properties.NUTS_ID.indexOf('TR') === -1
+            );
+          });
+
+          return geoJson;
+        }
+      },
+      zoom: true,
+      panning: true,
+      series: {
+        data: data[0],
+        joinBy: ['id', 'ID'],
+        value: 'Taux de chômage, différence entre 2016 et 2007 (en points de %)',
+        scale: {}
+      }
+    });
+  });
+</script>
+
+</html>

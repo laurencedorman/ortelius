@@ -4,6 +4,8 @@ import { useSpring, animated } from 'react-spring';
 
 import { ZoomContext } from './ZoomableGroup';
 
+import styles from './Geography.module';
+
 export function Geography({ path, projection, fillInitial, fillHover, stroke, geography }) {
   const [props, setFill] = useSpring(() => ({ fill: fillInitial }));
   const { handleZoomClick } = useContext(ZoomContext);
@@ -26,6 +28,7 @@ export function Geography({ path, projection, fillInitial, fillHover, stroke, ge
   return (
     <animated.path
       d={drawn}
+      className={styles.Geography}
       style={props}
       stroke={stroke}
       onMouseLeave={onMouseLeave}

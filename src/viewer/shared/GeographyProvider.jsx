@@ -2,18 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { geoPath } from 'd3-geo';
 
-import fileExtension from 'utils/fileExtension';
 import prepareGeoJson from 'utils/prepareGeoJson';
 
 export default class GeographyProvider extends React.PureComponent {
   static propTypes = {
     url: PropTypes.string.isRequired,
     render: PropTypes.func.isRequired,
-    filter: PropTypes.func
+    filter: PropTypes.func,
+    format: PropTypes.string,
+    simplifyFactor: PropTypes.number
   };
 
   static defaultProps = {
-    filter: geoJson => geoJson
+    filter: geoJson => geoJson,
+    format: 'topojson',
+    simplifyFactor: 0
   };
 
   constructor(props) {
@@ -28,12 +31,12 @@ export default class GeographyProvider extends React.PureComponent {
   }
 
   async componentDidMount() {
-    const { url, height, width, projection, filter } = this.props;
+    const { url, height, width, projection, filter, format, simplifyFactor } = this.props;
 
     const geojson = await fetch(url)
       .then(response => response.json())
       .then(geoAssets => {
-        return prepareGeoJson(fileExtension(url), geoAssets, filter);
+        return prepareGeoJson(format, geoAssets, filter, simplifyFactor);
       });
 
     const geoProjection = projection.fitSize([width, height], geojson);
@@ -41,8 +44,7 @@ export default class GeographyProvider extends React.PureComponent {
     this.setState({
       isLoading: false,
       geographies: geojson.features,
-      projection: geoProjection.precision(0.5),
-      // projection: geoProjection,
+      projection: geoProjection,
       path: geoPath(geoProjection)
     });
   }
