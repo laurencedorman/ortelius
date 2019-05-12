@@ -7,7 +7,7 @@ import Geography from 'viewer/shared/Geography';
 import createColorScale from 'utils/createColorScale';
 import { castToFloat } from 'utils/prepareData';
 
-export default function Choropleth({ series, ...restOfProps }) {
+export default function Choropleth({ series, legend, ...restOfProps }) {
   const { data, value, joinBy, scale } = series;
   const [geoKey, seriesKey] = joinBy;
 
@@ -24,6 +24,8 @@ export default function Choropleth({ series, ...restOfProps }) {
 
   const colorScale = createColorScale(scale, dataById);
 
+  const legendConfig = legend ? { scale: colorScale } : undefined;
+
   const fillFunction = geography => {
     if (Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])) {
       return colorScale(dataById[geography[geoKey]].value);
@@ -31,7 +33,7 @@ export default function Choropleth({ series, ...restOfProps }) {
   };
 
   return (
-    <MapFactory {...restOfProps}>
+    <MapFactory legend={legendConfig} {...restOfProps}>
       {({ geographies, path, projection }) =>
         geographies.map(geography => {
           const fillInitial = fillFunction(geography);

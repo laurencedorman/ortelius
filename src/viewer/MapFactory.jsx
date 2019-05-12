@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { geoMercator } from 'd3-geo';
-
 import GeographyProvider from 'viewer/shared/GeographyProvider';
 import Legend from 'viewer/shared/Legend';
 import Toolbar from 'viewer/shared/Toolbar';
 import SvgContainer from 'viewer/shared/SvgContainer';
 import ZoomableGroup from 'viewer/shared/ZoomableGroup';
+
+import * as d3 from 'utils/d3-custom';
 
 import getDrawDims from 'utils/getDrawDims';
 
@@ -17,7 +17,8 @@ const Markers = () => null;
 export default function MapFactory({
   margin = 10,
   geoAssets,
-  projection = geoMercator(),
+  projection = d3.geoMercator(),
+  legend,
   series,
   children
 }) {
@@ -42,7 +43,7 @@ export default function MapFactory({
           </ZoomableGroup>
         )}
       />
-      <Legend />
+      {legend && <Legend {...legend} />}
       <Toolbar />
     </SvgContainer>
   );

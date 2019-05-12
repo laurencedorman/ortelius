@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { geoPath } from 'd3-geo';
 
 import prepareGeoJson from 'utils/prepareGeoJson';
+import * as d3 from 'utils/d3-custom';
 
 export default class GeographyProvider extends React.PureComponent {
   static propTypes = {
@@ -45,7 +45,7 @@ export default class GeographyProvider extends React.PureComponent {
       isLoading: false,
       geographies: geojson.features,
       projection: geoProjection,
-      path: geoPath(geoProjection)
+      path: d3.geoPath(geoProjection)
     });
   }
 

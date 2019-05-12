@@ -16,7 +16,9 @@ export default function createColorScale(
     return scaleLinear()
       .domain([min, max])
       .range([interpolateViridis(0), interpolateViridis(1)]);
-  } else if (type === 'threshold') {
+  }
+
+  if (type === 'threshold') {
     return scaleThreshold()
       .domain(config.domain)
       .range(config.range);
