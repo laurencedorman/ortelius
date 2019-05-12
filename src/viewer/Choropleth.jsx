@@ -24,7 +24,7 @@ export default function Choropleth({ series, legend, ...restOfProps }) {
 
   const colorScale = createColorScale(scale, dataById);
 
-  const legendConfig = legend ? { scale: colorScale } : undefined;
+  const legendConfig = legend ? { ...legend, scale: colorScale } : undefined;
 
   const fillFunction = geography => {
     if (Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])) {

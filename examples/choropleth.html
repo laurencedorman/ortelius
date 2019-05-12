@@ -8,6 +8,13 @@
     body {
       margin: 0;
       overflow: hidden;
+      font-family: sans-serif;
+      background-color: #2d3539;
+    }
+
+    .legend .label {
+      font-size: 12px;
+      stroke: white;
     }
   </style>
 </head>
@@ -22,6 +29,7 @@
       container: '#root',
       type: 'choropleth',
       geoAssets: {
+        simplifyFactor: 0.005,
         url: 'https://ec.europa.eu/eurostat/cache/GISCO/distribution/v2/nuts/topojson/NUTS_RG_20M_2013_4326_LEVL_2.json',
         filter: geoJson => {
           geoJson.features = geoJson.features.filter(feature => {
@@ -41,7 +49,13 @@
       },
       zoom: true,
       panning: true,
-      legend: true,
+      legend: {
+        labels: [
+          'Les taux de chômage ont diminué',
+          'Les taux de chômage ont augmenté de moins de 5p%',
+          'Les taux de chômage ont augmenté de plus de 5p%'
+        ]
+      },
       series: {
         data: data[0],
         joinBy: ['id', 'ID'],

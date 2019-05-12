@@ -8,7 +8,6 @@ import SvgContainer from 'viewer/shared/SvgContainer';
 import ZoomableGroup from 'viewer/shared/ZoomableGroup';
 
 import * as d3 from 'utils/d3-custom';
-
 import getDrawDims from 'utils/getDrawDims';
 
 const Annotations = () => null;

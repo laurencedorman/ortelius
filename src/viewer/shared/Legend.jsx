@@ -11,11 +11,14 @@ export default class Legend extends React.PureComponent {
   }
 
   componentDidMount() {
+    const { labels, labelWrap, scale } = this.props;
+
     const legend = d3
       .legendColor()
       .labelFormat(d3.format('.2f'))
-      // .labels(d3.legendHelpers.thresholdLabels)
-      .scale(this.props.scale);
+      .labels(labels)
+      .labelWrap(labelWrap)
+      .scale(scale);
 
     d3.select(this.legendContainer.current).call(legend);
   }
