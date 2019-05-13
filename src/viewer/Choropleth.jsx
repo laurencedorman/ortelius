@@ -33,14 +33,25 @@ export default function Choropleth({ series, legend, ...restOfProps }) {
   };
 
   return (
-    <MapFactory legend={legendConfig} {...restOfProps}>
+    <MapFactory
+      legend={legendConfig}
+      series={series}
+      geoKey={geoKey}
+      seriesKey={seriesKey}
+      dataById={dataById}
+      {...restOfProps}
+    >
       {({ geographies, path, projection }) =>
         geographies.map(geography => {
+          const datum = Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])
+            ? dataById[geography[geoKey]]
+            : undefined;
           const fillInitial = fillFunction(geography);
 
           return (
             <Geography
               key={geography.id}
+              data={datum}
               geography={geography}
               path={path}
               projection={projection}

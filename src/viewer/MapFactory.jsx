@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import GeographyProvider from 'viewer/shared/GeographyProvider';
 import Legend from 'viewer/shared/Legend';
 import Toolbar from 'viewer/shared/Toolbar';
+import Tooltip from 'viewer/shared/Tooltip';
 import SvgContainer from 'viewer/shared/SvgContainer';
 import ZoomableGroup from 'viewer/shared/ZoomableGroup';
 
@@ -21,29 +22,47 @@ export default function MapFactory({
   series,
   children
 }) {
+  const containerEl = useRef(null);
+  const [tooltip, setTooltip] = useState(false);
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin);
 
   const annotations = false;
   const markers = false;
 
+  const handleZoom = ({ isZoomed, geography, data }) => {
+    if (isZoomed) {
+      setTooltip({ title: data.Région, valueLabel: series.value, value: data.value });
+    } else {
+      setTooltip(false);
+    }
+  };
+
   return (
-    <SvgContainer margin={margin} height={clientHeight} width={clientWidth}>
-      <GeographyProvider
-        height={drawHeight}
-        width={drawWidth}
-        projection={projection}
-        {...geoAssets}
-        render={geographyProps => (
-          <ZoomableGroup height={drawHeight} width={drawWidth}>
-            {children({ ...geographyProps })}
-            {annotations && <Annotations annotations={annotations} />}
-            {markers && <Markers markers={markers} />}
-          </ZoomableGroup>
-        )}
-      />
-      {legend && <Legend {...legend} />}
+    <div className="container" ref={containerEl}>
+      <SvgContainer margin={margin} height={clientHeight} width={clientWidth}>
+        <GeographyProvider
+          height={drawHeight}
+          width={drawWidth}
+          projection={projection}
+          {...geoAssets}
+          render={geographyProps => (
+            <ZoomableGroup
+              containerRef={containerEl}
+              onZoom={handleZoom}
+              height={drawHeight}
+              width={drawWidth}
+            >
+              {children({ ...geographyProps })}
+              {annotations && <Annotations annotations={annotations} />}
+              {markers && <Markers markers={markers} />}
+            </ZoomableGroup>
+          )}
+        />
+        {legend && <Legend {...legend} />}
+      </SvgContainer>
       <Toolbar />
-    </SvgContainer>
+      {tooltip && <Tooltip {...tooltip} />}
+    </div>
   );
 }

@@ -6,8 +6,8 @@ import { ZoomContext } from './ZoomableGroup';
 
 import styles from './Geography.module';
 
-export function Geography({ path, projection, fillInitial, fillHover, stroke, geography }) {
-  const [props, setFill] = useSpring(() => ({ fill: fillInitial }));
+export function Geography({ path, projection, fillInitial, fillHover, stroke, geography, data }) {
+  const [style, setFill] = useSpring(() => ({ fill: fillInitial }));
   const { handleZoomClick } = useContext(ZoomContext);
 
   const onMouseEnter = e => {
@@ -29,16 +29,16 @@ export function Geography({ path, projection, fillInitial, fillHover, stroke, ge
     <animated.path
       d={drawn}
       className={styles.Geography}
-      style={props}
+      style={style}
       stroke={stroke}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
-      onClick={handleZoomClick.bind(null, bounds)}
+      onClick={handleZoomClick.bind(null, { bounds, geography, data })}
     />
   );
 }
 
-export default React.memo(Geography);
+export default Geography;
 
 Geography.propTypes = {
   // bounds: PropTypes.arrayOf(PropTypes.array).isRequired,
