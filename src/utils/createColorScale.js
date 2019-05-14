@@ -24,4 +24,6 @@ export default function createColorScale(config, dataById) {
       .domain(domain)
       .range(range);
   }
+
+  return null;
 }
