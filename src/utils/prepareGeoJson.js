@@ -1,4 +1,5 @@
-import * as topojson from 'topojson';
+import { feature } from 'topojson-client';
+import { presimplify, simplify } from 'topojson-simplify';
 
 export default function prepareGeoJson(
   format = 'topojson',
@@ -10,10 +11,10 @@ export default function prepareGeoJson(
 
   if (format === 'topojson') {
     const topoJsonKey = Object.keys(fetchedData.objects)[0];
-    let topoJson = topojson.presimplify(fetchedData);
-    topoJson = topojson.simplify(topoJson, simplifyFactor);
+    let topoJson = presimplify(fetchedData);
+    topoJson = simplify(topoJson, simplifyFactor);
 
-    geoJson = topojson.feature(topoJson, topoJson.objects[topoJsonKey]);
+    geoJson = feature(topoJson, topoJson.objects[topoJsonKey]);
   }
 
   geoJson = filter(geoJson);
