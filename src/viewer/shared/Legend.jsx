@@ -1,29 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import * as d3 from 'utils/d3-custom.js';
+import * as d3 from 'utils/d3-custom';
 
-export default class Legend extends React.PureComponent {
-  constructor(props) {
-    super(props);
+import styles from './Legend.module';
 
-    this.legendContainer = React.createRef();
-  }
+export default function Legend({ labels, scale }) {
+  const legendItems = scale.range();
 
-  componentDidMount() {
-    const { labels, labelWrap, scale } = this.props;
-
-    const legend = d3
-      .legendColor()
-      .labelFormat(d3.format('.2f'))
-      .labels(labels)
-      .labelWrap(labelWrap)
-      .scale(scale);
-
-    d3.select(this.legendContainer.current).call(legend);
-  }
-
-  render() {
-    return <g className="legend" ref={this.legendContainer} />;
-  }
+  return (
+    <div className={styles.Legend}>
+      {legendItems.map((item, index) => {
+        return (
+          <div key={`${item}-${index}`} className={styles.LegendItem}>
+            <i style={{ backgroundColor: item }} />
+            <p>{labels[index]}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
 }

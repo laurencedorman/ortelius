@@ -20,10 +20,12 @@ export default function MapFactory({
   projection = d3.geoMercator(),
   legend,
   series,
-  children
+  seriesKey,
+  children,
+  tooltip
 }) {
   const containerEl = useRef(null);
-  const [tooltip, setTooltip] = useState(false);
+  const [tooltipItems, setTooltipItems] = useState(false);
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin);
 
@@ -31,10 +33,10 @@ export default function MapFactory({
   const markers = false;
 
   const handleZoom = ({ isZoomed, geography, data }) => {
-    if (isZoomed) {
-      setTooltip({ title: data.Région, valueLabel: series.value, value: data.value });
+    if (isZoomed && tooltip && tooltip.formatter) {
+      setTooltipItems(tooltip.formatter(geography, data, seriesKey));
     } else {
-      setTooltip(false);
+      setTooltipItems(false);
     }
   };
 
@@ -59,10 +61,10 @@ export default function MapFactory({
             </ZoomableGroup>
           )}
         />
-        {legend && <Legend {...legend} />}
       </SvgContainer>
       <Toolbar />
-      {tooltip && <Tooltip {...tooltip} />}
+      {legend && <Legend {...legend} />}
+      {tooltipItems && <Tooltip items={tooltipItems} />}
     </div>
   );
 }
