@@ -1,11 +1,12 @@
 import { scaleLinear, scaleThreshold } from 'd3-scale';
 import { interpolateViridis } from 'd3-scale-chromatic';
 
-export default function createColorScale(
-  config = { type: 'linear', range: [interpolateViridis(0), interpolateViridis(1)] },
-  dataById
-) {
-  const { type } = config;
+export default function createColorScale(config, dataById) {
+  const {
+    type = 'linear',
+    domain,
+    range = [interpolateViridis(0), interpolateViridis(1)]
+  } = config;
 
   if (type === 'linear') {
     const scaleData = Object.values(dataById).map(datum => datum.value);
@@ -15,12 +16,12 @@ export default function createColorScale(
 
     return scaleLinear()
       .domain([min, max])
-      .range([interpolateViridis(0), interpolateViridis(1)]);
+      .range(range);
   }
 
   if (type === 'threshold') {
     return scaleThreshold()
-      .domain(config.domain)
-      .range(config.range);
+      .domain(domain)
+      .range(range);
   }
 }
