@@ -3,8 +3,9 @@
     "baseUrl": ".",
     "target": "es6",
     "paths": {
-      "editor": ["/src/editor"],
-      "viewer": ["/src/viewer"],
+      "components": ["/src/components"],
+      "hooks": ["/src/hooks"],
+      "modules": ["/src/modules"],
       "utils": ["/src/utils"],
     }
   },

@@ -4,4 +4,4 @@ import { format, formatLocale } from 'd3-format';
 
 import { geoPath, geoMercator } from 'd3-geo';
 
-export { scaleLinear, scaleThreshold, formatLocale, format, geoPath, geoMercator };
+export default { scaleLinear, scaleThreshold, formatLocale, format, geoPath, geoMercator };

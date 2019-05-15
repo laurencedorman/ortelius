@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { csvParse } from 'd3-dsv';
 
-import Choropleth from './Choropleth';
+import Choropleth from 'modules/Choropleth';
 
 export default {
   createMap: ({ container, type, ...rest }) => {

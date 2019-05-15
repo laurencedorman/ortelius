@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
   const config = {
-    entry: './src/viewer/index',
+    entry: './src/index',
     output: {
       filename: './main.js',
       libraryTarget: 'umd',
@@ -54,10 +54,10 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: ['.js', '.jsx', '.scss'],
       alias: {
-        editor: path.resolve(__dirname, 'src/editor/'),
+        components: path.resolve(__dirname, 'src/components/'),
         hooks: path.resolve(__dirname, 'src/hooks/'),
-        lib: path.resolve(__dirname, 'src/lib/'),
-        viewer: path.resolve(__dirname, 'src/viewer/'),
+        modules: path.resolve(__dirname, 'src/modules/'),
+        styles: path.resolve(__dirname, 'src/styles/'),
         utils: path.resolve(__dirname, 'src/utils/')
       }
     }

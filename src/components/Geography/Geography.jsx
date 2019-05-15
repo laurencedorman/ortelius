@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
 
-import { ZoomContext } from './ZoomableGroup';
+import { ZoomContext } from 'components/ZoomableGroup';
 
 import styles from './Geography.module';
 
@@ -41,14 +41,13 @@ export function Geography({ path, projection, fillInitial, fillHover, stroke, ge
 export default Geography;
 
 Geography.propTypes = {
-  // bounds: PropTypes.arrayOf(PropTypes.array).isRequired,
   data: PropTypes.shape({
     id: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   }),
   fillHover: PropTypes.string,
   fillInitial: PropTypes.string,
-  // path: PropTypes.string.isRequired,
+  path: PropTypes.func.isRequired,
   stroke: PropTypes.string
 };
 

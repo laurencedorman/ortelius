@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MapFactory from './MapFactory';
-import Geography from 'viewer/shared/Geography';
+import MapFactory from 'components/MapFactory';
+import Geography from 'components/Geography';
 
 import createColorScale from 'utils/createColorScale';
 import { castToFloat } from 'utils/prepareData';
@@ -63,3 +63,14 @@ export default function Choropleth({ series, legend, ...restOfProps }) {
     </MapFactory>
   );
 }
+
+Choropleth.propTypes = {
+  series: PropTypes.arrayOf(Object).isRequired,
+  legend: PropTypes.shape({
+    labels: PropTypes.arrayOf(String)
+  })
+};
+
+Choropleth.defaultProps = {
+  legend: undefined
+};
