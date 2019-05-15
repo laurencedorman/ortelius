@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import prepareGeoJson from 'utils/prepareGeoJson';
-import * as d3 from 'utils/d3-custom';
+import d3 from 'utils/d3-custom';
 
 export default class GeographyProvider extends React.PureComponent {
   static propTypes = {

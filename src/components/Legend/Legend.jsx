@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import * as d3 from 'utils/d3-custom';
-
 import styles from './Legend.module';
 
 export default function Legend({ labels, scale }) {
