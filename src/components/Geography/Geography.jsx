@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
 
@@ -7,19 +7,20 @@ import { ZoomContext } from 'components/ZoomableGroup';
 import styles from './Geography.module';
 
 export function Geography({ path, projection, fillInitial, fillHover, stroke, geography, data }) {
-  const [style, setFill] = useSpring(() => ({ fill: fillInitial }));
+  const [isHover, toggleHover] = useState(false);
+  const style = useSpring({ fill: isHover ? fillHover : fillInitial });
   const { handleZoomClick } = useContext(ZoomContext);
 
   const onMouseEnter = e => {
     e.preventDefault();
 
-    setFill({ fill: fillHover });
+    toggleHover(true);
   };
 
   const onMouseLeave = e => {
     e.preventDefault();
 
-    setFill({ fill: fillInitial });
+    toggleHover(false);
   };
 
   const drawn = path(geography);

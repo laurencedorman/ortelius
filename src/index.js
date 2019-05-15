@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { csvParse } from 'd3-dsv';
+import { dsvFormat } from 'd3-dsv';
 
 import Choropleth from 'modules/Choropleth';
 
@@ -21,10 +21,10 @@ export default {
       containerElem
     );
   },
-  fetchCSV: async urls => {
+  fetchCSV: async (urls, separator = ',') => {
     const rawCSV = await Promise.all(urls.map(url => fetch(url).then(response => response.text())));
 
-    return rawCSV.map(csvParse);
+    return rawCSV.map(dsvFormat(separator).parse);
   },
   fetchJSON: async items =>
     Promise.all(items.map(({ url }) => fetch(url).then(response => response.json())))

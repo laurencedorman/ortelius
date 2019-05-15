@@ -65,8 +65,12 @@ export default function ZoomableGroup({ height, width, containerRef, onZoom, chi
 
 ZoomableGroup.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  containerRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   height: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  onZoom: PropTypes.func.isRequired
 };
 
-ZoomableGroup.defaultProps = {};
+ZoomableGroup.defaultProps = {
+  containerRef: undefined
+};

@@ -50,7 +50,7 @@
       SE: 'Suède',
       UK: 'Royaume-Uni'
     };
-    var map = Ortelius.fetchCSV(['./data.csv']).then(function (data) {
+    var map = Ortelius.fetchCSV(['./data-timeline.csv'], ';').then(function (data) {
       return Ortelius.createMap({
         container: '#root',
         type: 'choropleth',
@@ -100,9 +100,13 @@
           }
         },
         series: {
+          dateTime: {
+            interval: 'year',
+            from: '2007',
+            to: '2008'
+          },
           data: data[0],
           joinBy: ['id', 'ID'],
-          value: 'Taux de chômage, différence entre 2016 et 2007 (en points de %)',
           scale: {
             type: 'threshold',
             domain: [0, 5],
