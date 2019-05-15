@@ -25,6 +25,7 @@ export default function MapFactory({
   tooltip
 }) {
   const containerEl = useRef(null);
+  const [highlightedGeography, setHighlightedGeography] = useState(false);
   const [tooltipItems, setTooltipItems] = useState(false);
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin);
@@ -34,8 +35,10 @@ export default function MapFactory({
 
   const handleZoom = ({ isZoomed, geography, data }) => {
     if (isZoomed && tooltip && tooltip.formatter) {
+      setHighlightedGeography(geography);
       setTooltipItems(tooltip.formatter(geography, data, seriesKey));
     } else {
+      setHighlightedGeography(false);
       setTooltipItems(false);
     }
   };
@@ -55,7 +58,7 @@ export default function MapFactory({
               height={drawHeight}
               width={drawWidth}
             >
-              {render({ ...geographyProps })}
+              {render({ ...geographyProps, highlightedGeography })}
               {annotations && <Annotations annotations={annotations} />}
               {markers && <Markers markers={markers} />}
             </ZoomableGroup>
@@ -79,8 +82,8 @@ MapFactory.propTypes = {
   legend: PropTypes.shape({
     labels: PropTypes.arrayOf(String)
   }),
-  renderGeographies: PropTypes.func.isRequired,
-  renderToolbar: PropTypes.func,
+  render: PropTypes.func.isRequired,
+  toolbar: PropTypes.object,
   tooltip: PropTypes.shape({
     formatter: PropTypes.func
   }),

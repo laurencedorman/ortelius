@@ -7,26 +7,35 @@ import Geography from 'components/Geography';
 import castToFloat from 'utils/castToFloat';
 import createColorScale from 'utils/createColorScale';
 
-function setDataById(data, value, seriesKey) {
-  return data.reduce((dict, datum) => {
+const dataByIdCache = {};
+
+function setDataById(data, valueKey, seriesKey) {
+  if (dataByIdCache[valueKey]) {
+    return dataByIdCache[valueKey];
+  }
+
+  const dataById = data.reduce((dict, datum) => {
     return {
       ...dict,
       [datum[seriesKey]]: {
         ...datum,
-        value: castToFloat(datum[value], datum[seriesKey])
+        value: castToFloat(datum[valueKey], datum[seriesKey])
       }
     };
   }, {});
+
+  dataByIdCache[valueKey] = dataById;
+
+  return dataByIdCache[valueKey];
 }
 
 export default function Choropleth({ series, legend, ...restOfProps }) {
   const { data, value: valueKey, joinBy, dateTime, scale } = series;
   const [geoKey, seriesKey] = joinBy;
-
-  const initialValue = dateTime ? dateTime.from : valueKey;
   let toolbarProps = null;
 
-  const [dataById, updateDataById] = useState(setDataById(data, initialValue, seriesKey));
+  const initialValueKey = dateTime ? dateTime.from : valueKey;
+  const [dataById, updateDataById] = useState(setDataById(data, initialValueKey, seriesKey));
 
   if (dateTime) {
     toolbarProps = {
@@ -41,7 +50,11 @@ export default function Choropleth({ series, legend, ...restOfProps }) {
 
   const legendConfig = legend ? { ...legend, scale: colorScale } : undefined;
 
-  const fillFunction = geography => {
+  const fillFunction = (geography, highlightedGeography) => {
+    if (highlightedGeography && geography[geoKey] === highlightedGeography[geoKey]) {
+      return '#fafa';
+    }
+
     if (Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])) {
       return colorScale(dataById[geography[geoKey]].value);
     }
@@ -58,12 +71,12 @@ export default function Choropleth({ series, legend, ...restOfProps }) {
       dataById={dataById}
       {...restOfProps}
       toolbar={toolbarProps}
-      render={({ geographies, path, projection }) => {
+      render={({ geographies, path, projection, highlightedGeography }) => {
         return geographies.map(geography => {
           const datum = Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])
             ? dataById[geography[geoKey]]
             : undefined;
-          const fillInitial = fillFunction(geography);
+          const fillInitial = fillFunction(geography, highlightedGeography);
 
           return (
             <Geography
