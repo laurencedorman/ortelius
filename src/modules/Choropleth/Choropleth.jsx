@@ -9,7 +9,7 @@ import createColorScale from 'utils/createColorScale';
 
 const dataByIdCache = {};
 
-function setDataById(data, valueKey, seriesKey) {
+function calculateDataById(data, valueKey, seriesKey) {
   if (dataByIdCache[valueKey]) {
     return dataByIdCache[valueKey];
   }
@@ -30,18 +30,20 @@ function setDataById(data, valueKey, seriesKey) {
 }
 
 export default function Choropleth({ series, legend, ...restOfProps }) {
-  const { data, value: valueKey, joinBy, dateTime, scale } = series;
+  const { data, value: initialValueKey, joinBy, dateTime, scale } = series;
   const [geoKey, seriesKey] = joinBy;
   let toolbarProps = null;
 
-  const initialValueKey = dateTime ? dateTime.from : valueKey;
-  const [dataById, updateDataById] = useState(setDataById(data, initialValueKey, seriesKey));
+  const [valueKey, setValueKey] = useState(() => (dateTime ? dateTime.from : initialValueKey));
+  const [dataById, setDataById] = useState(calculateDataById(data, valueKey, seriesKey));
 
   if (dateTime) {
     toolbarProps = {
       ...dateTime,
+      activeValueKey: valueKey,
       onChange: newValueKey => {
-        updateDataById(setDataById(data, newValueKey, seriesKey));
+        setValueKey(newValueKey);
+        setDataById(calculateDataById(data, newValueKey, seriesKey));
       }
     };
   }

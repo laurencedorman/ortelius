@@ -28,7 +28,7 @@ export default function MapFactory({
   const [highlightedGeography, setHighlightedGeography] = useState(false);
   const [tooltipItems, setTooltipItems] = useState(false);
   const { clientHeight, clientWidth } = document.documentElement;
-  const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin);
+  const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin, toolbar);
 
   const annotations = false;
   const markers = false;
@@ -65,7 +65,7 @@ export default function MapFactory({
           )}
         />
       </SvgContainer>
-      {toolbar && <Toolbar {...toolbar} />}
+      {toolbar && <Toolbar {...toolbar} margin={margin} width={drawWidth} />}
       {legend && <Legend {...legend} />}
       {tooltipItems && <Tooltip items={tooltipItems} />}
     </div>
