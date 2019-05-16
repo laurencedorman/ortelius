@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
 
-import zoomToBoundingBox from 'utils/zoomToBoundingBox';
+import { zoomToBoundingBox } from 'utils';
 
 import styles from './ZoomableGroup.module';
 

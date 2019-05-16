@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import dayjs from 'dayjs';
+
 import styles from './Toolbar.module';
 
-import d3 from 'utils/d3-custom';
-
-import dayjs from 'dayjs';
+import { d3 } from 'utils';
 
 export default function Toolbar({
   from: fromString,

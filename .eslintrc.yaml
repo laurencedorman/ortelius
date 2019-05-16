@@ -10,6 +10,7 @@ rules:
   prettier/prettier:
     - error
   import/no-unamed-as-default: 0
+  import/prefer-default-export: 0
 
 env:
   browser: true

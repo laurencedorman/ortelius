@@ -2,15 +2,17 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es6",
+    "jsx": "react",
+    "module": "commonjs",
     "paths": {
-      "components": ["/src/components"],
-      "hooks": ["/src/hooks"],
-      "modules": ["/src/modules"],
-      "utils": ["/src/utils"],
+      "components": ["./src/components/index.js"],
+      "hooks": ["./src/hooks/index.js"],
+      "modules": ["./src/modules/index.js"],
+      "utils": ["./src/utils/index.js"],
     }
   },
   "include": [
-    "src/**/*"
+    "./src/**/*"
   ],
   "exclude": [
     "node_modules"

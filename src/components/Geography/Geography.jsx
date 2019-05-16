@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
 
-import { ZoomContext } from 'components/ZoomableGroup';
+import { ZoomContext } from 'components';
 
 import styles from './Geography.module';
 

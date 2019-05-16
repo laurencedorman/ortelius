@@ -1,20 +1,21 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import GeographyProvider from 'components/GeographyProvider';
-import Legend from 'components/Legend';
-import Toolbar from 'components/Toolbar';
-import Tooltip from 'components/Tooltip';
-import SvgContainer from 'components/SvgContainer';
-import ZoomableGroup from 'components/ZoomableGroup';
+import {
+  GeographyProvider,
+  Legend,
+  Toolbar,
+  Tooltip,
+  SvgContainer,
+  ZoomableGroup
+} from 'components';
 
-import d3 from 'utils/d3-custom';
-import getDrawDims from 'utils/getDrawDims';
+import { d3, getDrawDims } from 'utils';
 
 const Annotations = () => null;
 const Markers = () => null;
 
-export default function MapFactory({
+export default function Map({
   margin,
   geoAssets,
   projection,
@@ -72,7 +73,7 @@ export default function MapFactory({
   );
 }
 
-MapFactory.propTypes = {
+Map.propTypes = {
   margin: PropTypes.number,
   geoAssets: PropTypes.shape({
     url: PropTypes.string.isRequired,
@@ -90,7 +91,7 @@ MapFactory.propTypes = {
   seriesKey: PropTypes.string.isRequired
 };
 
-MapFactory.defaultProps = {
+Map.defaultProps = {
   legend: undefined,
   margin: 10,
   projection: d3.geoMercator(),

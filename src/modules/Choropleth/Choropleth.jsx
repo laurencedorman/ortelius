@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import MapFactory from 'components/MapFactory';
-import Geography from 'components/Geography';
-
-import castToFloat from 'utils/castToFloat';
-import createColorScale from 'utils/createColorScale';
+import { Map, Geography } from 'components';
+import { castToFloat, createColorScale } from 'utils';
 
 const dataByIdCache = {};
 
@@ -65,7 +62,7 @@ export default function Choropleth({ series, legend, ...restOfProps }) {
   };
 
   return (
-    <MapFactory
+    <Map
       legend={legendConfig}
       series={series}
       geoKey={geoKey}
