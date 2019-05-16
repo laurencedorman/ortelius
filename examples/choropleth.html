@@ -83,17 +83,17 @@
           ]
         },
         tooltip: {
-          formatter: function (geography, data) {
+          formatter: function (geography) {
             var items = [];
 
             items.push({
               isTitle: true,
               label: nuts[geography.id.slice(0, 2)],
-              value: data['Région']
+              value: geography['Région']
             });
             items.push({
               label: 'Taux de chômage, différence entre 2016 et 2007 (en points de %)',
-              value: data.value.toLocaleString('fr-FR')
+              value: geography.value.toLocaleString('fr-FR')
             });
 
             return items;

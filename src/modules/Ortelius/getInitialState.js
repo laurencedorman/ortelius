@@ -1,7 +1,8 @@
 const initialState = {
   valueKey: null,
   isZoomed: false,
-  highlighted: false
+  highlightedGeography: false,
+  zoom: [0, 0, 1]
 };
 
 export function getInitialState(state) {

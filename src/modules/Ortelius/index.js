@@ -3,9 +3,20 @@ import PropTypes from 'prop-types';
 
 import { getDataById, getDisplayName } from 'utils';
 
-import { setValueKey } from './actions';
+import actions from './actions';
 import { getInitialState } from './getInitialState';
 import reducers from './reducers';
+
+export const OrteliusContext = React.createContext({});
+
+function prepareActions(actionFns, dispatch) {
+  return Object.keys(actionFns).reduce((prepared, key) => {
+    return {
+      ...prepared,
+      [key]: actionFns[key](dispatch)
+    };
+  }, {});
+}
 
 export default function withOrtelius(WrappedComponent) {
   function Ortelius({ series, ...passThroughProps }) {
@@ -19,21 +30,30 @@ export default function withOrtelius(WrappedComponent) {
       })
     );
 
+    const preparedActions = prepareActions(actions, dispatch);
+
     const { valueKey } = state;
 
     const dataById = getDataById(data, valueKey, seriesKey);
 
-    return React.createElement(WrappedComponent, {
-      dataById,
-      geoKey,
-      series,
-      toolbar: dateTime && {
-        ...dateTime,
-        activeValueKey: valueKey,
-        onChange: setValueKey(dispatch)
+    const context = {
+      ...state,
+      ...preparedActions
+    };
+
+    return React.createElement(
+      OrteliusContext.Provider,
+      {
+        value: context
       },
-      ...passThroughProps
-    });
+      React.createElement(WrappedComponent, {
+        dataById,
+        geoKey,
+        series,
+        toolbar: dateTime,
+        ...passThroughProps
+      })
+    );
   }
 
   Ortelius.propTypes = {

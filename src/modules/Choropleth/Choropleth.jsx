@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { Map, Geography } from 'components';
 import { createColorScale } from 'utils';
 
-import Ortelius from '../Ortelius';
+import Ortelius, { OrteliusContext } from '../Ortelius';
 
 export function Choropleth({ dataById, series, legend, ...passThroughProps }) {
+  const { highlightedGeography } = useContext(OrteliusContext);
+
   const { joinBy, scale } = series;
-  const [geoKey] = joinBy;
+  const [geoKey, seriesKey] = joinBy;
 
   const colorScale = createColorScale(scale, dataById);
 
   const legendConfig = legend ? { ...legend, scale: colorScale } : undefined;
 
-  const fillFunction = (geography, highlightedGeography) => {
+  const fillFunction = geography => {
     if (highlightedGeography && geography[geoKey] === highlightedGeography[geoKey]) {
       return '#fafa';
     }
@@ -30,15 +32,16 @@ export function Choropleth({ dataById, series, legend, ...passThroughProps }) {
     <Map
       legend={legendConfig}
       series={series}
+      seriesKey={seriesKey}
       geoKey={geoKey}
       dataById={dataById}
       {...passThroughProps}
-      render={({ geographies, path, projection, highlightedGeography }) => {
+      render={({ geographies, path, projection }) => {
         return geographies.map(geography => {
           const datum = Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])
             ? dataById[geography[geoKey]]
             : undefined;
-          const fillInitial = fillFunction(geography, highlightedGeography);
+          const fillInitial = fillFunction(geography);
 
           return (
             <Geography

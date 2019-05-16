@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './Legend.module';
 
-export default function Legend({ labels, scale }) {
+// @todo toggle legend
+// @todo make compatible with scaleLinear
+// @todo allow positioning; top-left, bottom-right etc
+export default function Legend({ title, labels, scale }) {
   const legendItems = scale.range();
 
   return (
@@ -19,3 +22,13 @@ export default function Legend({ labels, scale }) {
     </div>
   );
 }
+
+Legend.propTypes = {
+  title: PropTypes.string,
+  labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  scale: PropTypes.func.isRequired
+};
+
+Legend.defaultProps = {
+  title: ''
+};

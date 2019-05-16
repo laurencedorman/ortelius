@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { GeographyProvider, Legend, Toolbar, Tooltip, ZoomableGroup } from 'components';
@@ -19,23 +19,11 @@ export default function Map({
   tooltip
 }) {
   const containerEl = useRef(null);
-  const [highlightedGeography, setHighlightedGeography] = useState(false);
-  const [tooltipItems, setTooltipItems] = useState(false);
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin, toolbar);
 
   const annotations = false;
   const markers = false;
-
-  const handleZoom = ({ isZoomed, geography, data }) => {
-    if (isZoomed && tooltip && tooltip.formatter) {
-      setHighlightedGeography(geography);
-      setTooltipItems(tooltip.formatter(geography, data, seriesKey));
-    } else {
-      setHighlightedGeography(false);
-      setTooltipItems(false);
-    }
-  };
 
   return (
     <div className="container" ref={containerEl}>
@@ -47,13 +35,8 @@ export default function Map({
             projection={projection}
             {...geoAssets}
             render={geographyProps => (
-              <ZoomableGroup
-                containerRef={containerEl}
-                onZoom={handleZoom}
-                height={drawHeight}
-                width={drawWidth}
-              >
-                {render({ ...geographyProps, highlightedGeography })}
+              <ZoomableGroup containerRef={containerEl} height={drawHeight} width={drawWidth}>
+                {render({ ...geographyProps })}
                 {annotations && <Annotations annotations={annotations} />}
                 {markers && <Markers markers={markers} />}
               </ZoomableGroup>
@@ -63,7 +46,7 @@ export default function Map({
       </svg>
       {toolbar && <Toolbar {...toolbar} margin={margin} width={drawWidth} />}
       {legend && <Legend {...legend} />}
-      {tooltipItems && <Tooltip items={tooltipItems} />}
+      {tooltip && tooltip.formatter && <Tooltip formatter={tooltip.formatter} />}
     </div>
   );
 }

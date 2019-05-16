@@ -7,9 +7,10 @@ import { ZoomContext } from 'components';
 import styles from './Geography.module';
 
 export function Geography({ path, projection, fillInitial, fillHover, stroke, geography, data }) {
+  const { handleZoomClick } = useContext(ZoomContext);
+
   const [isHover, toggleHover] = useState(false);
   const style = useSpring({ fill: isHover ? fillHover : fillInitial });
-  const { handleZoomClick } = useContext(ZoomContext);
 
   const onMouseEnter = e => {
     e.preventDefault();
