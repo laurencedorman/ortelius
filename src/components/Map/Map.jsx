@@ -1,14 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  GeographyProvider,
-  Legend,
-  Toolbar,
-  Tooltip,
-  SvgContainer,
-  ZoomableGroup
-} from 'components';
+import { GeographyProvider, Legend, Toolbar, Tooltip, ZoomableGroup } from 'components';
 
 import { d3, getDrawDims } from 'utils';
 
@@ -46,26 +39,28 @@ export default function Map({
 
   return (
     <div className="container" ref={containerEl}>
-      <SvgContainer margin={margin} height={clientHeight} width={clientWidth}>
-        <GeographyProvider
-          height={drawHeight}
-          width={drawWidth}
-          projection={projection}
-          {...geoAssets}
-          render={geographyProps => (
-            <ZoomableGroup
-              containerRef={containerEl}
-              onZoom={handleZoom}
-              height={drawHeight}
-              width={drawWidth}
-            >
-              {render({ ...geographyProps, highlightedGeography })}
-              {annotations && <Annotations annotations={annotations} />}
-              {markers && <Markers markers={markers} />}
-            </ZoomableGroup>
-          )}
-        />
-      </SvgContainer>
+      <svg width={clientWidth} height={clientHeight}>
+        <g className="map-container" transform={`translate(${margin},${margin})`}>
+          <GeographyProvider
+            height={drawHeight}
+            width={drawWidth}
+            projection={projection}
+            {...geoAssets}
+            render={geographyProps => (
+              <ZoomableGroup
+                containerRef={containerEl}
+                onZoom={handleZoom}
+                height={drawHeight}
+                width={drawWidth}
+              >
+                {render({ ...geographyProps, highlightedGeography })}
+                {annotations && <Annotations annotations={annotations} />}
+                {markers && <Markers markers={markers} />}
+              </ZoomableGroup>
+            )}
+          />
+        </g>
+      </svg>
       {toolbar && <Toolbar {...toolbar} margin={margin} width={drawWidth} />}
       {legend && <Legend {...legend} />}
       {tooltipItems && <Tooltip items={tooltipItems} />}
@@ -95,6 +90,5 @@ Map.defaultProps = {
   legend: undefined,
   margin: 10,
   projection: d3.geoMercator(),
-  renderToolbar: () => null,
   tooltip: undefined
 };
