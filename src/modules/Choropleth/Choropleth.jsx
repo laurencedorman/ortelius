@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Map, Geography } from 'components';
 import { createColorScale } from 'utils';
 
-import withOrtelius from '../Ortelius';
+import Ortelius from '../Ortelius';
 
 export function Choropleth({ dataById, series, legend, ...passThroughProps }) {
   const { joinBy, scale } = series;
@@ -67,4 +67,4 @@ Choropleth.defaultProps = {
   legend: undefined
 };
 
-export default withOrtelius(Choropleth);
+export default Ortelius(Choropleth);
