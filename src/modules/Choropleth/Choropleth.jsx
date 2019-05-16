@@ -2,48 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Map, Geography } from 'components';
-import { castToFloat, createColorScale } from 'utils';
+import { createColorScale } from 'utils';
 
-const dataByIdCache = {};
+import withOrtelius from '../Ortelius';
 
-function calculateDataById(data, valueKey, seriesKey) {
-  if (dataByIdCache[valueKey]) {
-    return dataByIdCache[valueKey];
-  }
-
-  const dataById = data.reduce((dict, datum) => {
-    return {
-      ...dict,
-      [datum[seriesKey]]: {
-        ...datum,
-        value: castToFloat(datum[valueKey], datum[seriesKey])
-      }
-    };
-  }, {});
-
-  dataByIdCache[valueKey] = dataById;
-
-  return dataByIdCache[valueKey];
-}
-
-export default function Choropleth({ series, legend, ...restOfProps }) {
-  const { data, value: initialValueKey, joinBy, dateTime, scale } = series;
-  const [geoKey, seriesKey] = joinBy;
-  let toolbarProps = null;
-
-  const [valueKey, setValueKey] = useState(() => (dateTime ? dateTime.from : initialValueKey));
-  const [dataById, setDataById] = useState(calculateDataById(data, valueKey, seriesKey));
-
-  if (dateTime) {
-    toolbarProps = {
-      ...dateTime,
-      activeValueKey: valueKey,
-      onChange: newValueKey => {
-        setValueKey(newValueKey);
-        setDataById(calculateDataById(data, newValueKey, seriesKey));
-      }
-    };
-  }
+export function Choropleth({ dataById, series, legend, ...passThroughProps }) {
+  const { joinBy, scale } = series;
+  const [geoKey] = joinBy;
 
   const colorScale = createColorScale(scale, dataById);
 
@@ -66,10 +31,8 @@ export default function Choropleth({ series, legend, ...restOfProps }) {
       legend={legendConfig}
       series={series}
       geoKey={geoKey}
-      seriesKey={seriesKey}
       dataById={dataById}
-      {...restOfProps}
-      toolbar={toolbarProps}
+      {...passThroughProps}
       render={({ geographies, path, projection, highlightedGeography }) => {
         return geographies.map(geography => {
           const datum = Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])
@@ -103,3 +66,5 @@ Choropleth.propTypes = {
 Choropleth.defaultProps = {
   legend: undefined
 };
+
+export default withOrtelius(Choropleth);
