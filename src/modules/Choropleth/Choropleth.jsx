@@ -1,48 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import MapFactory from 'components/MapFactory';
-import Geography from 'components/Geography';
+import { Map, Geography } from 'components';
+import { createColorScale } from 'utils';
 
-import createColorScale from 'utils/createColorScale';
-import { castToFloat } from 'utils/prepareData';
+import Ortelius, { OrteliusContext } from '../Ortelius';
 
-export default function Choropleth({ series, legend, ...restOfProps }) {
-  const { data, value, joinBy, scale } = series;
+export function Choropleth({ dataById, series, legend, ...passThroughProps }) {
+  const { highlightedGeography } = useContext(OrteliusContext);
+
+  const { joinBy, scale } = series;
   const [geoKey, seriesKey] = joinBy;
-
-  const dataById = data.reduce(
-    (dict, datum) => ({
-      ...dict,
-      [datum[seriesKey]]: {
-        ...datum,
-        value: castToFloat(datum[value], datum[seriesKey])
-      }
-    }),
-    {}
-  );
 
   const colorScale = createColorScale(scale, dataById);
 
   const legendConfig = legend ? { ...legend, scale: colorScale } : undefined;
 
   const fillFunction = geography => {
+    if (highlightedGeography && geography[geoKey] === highlightedGeography[geoKey]) {
+      return '#fafa';
+    }
+
     if (Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])) {
       return colorScale(dataById[geography[geoKey]].value);
     }
+
+    return undefined;
   };
 
   return (
-    <MapFactory
+    <Map
       legend={legendConfig}
       series={series}
-      geoKey={geoKey}
       seriesKey={seriesKey}
+      geoKey={geoKey}
       dataById={dataById}
-      {...restOfProps}
-    >
-      {({ geographies, path, projection }) =>
-        geographies.map(geography => {
+      {...passThroughProps}
+      render={({ geographies, path, projection }) => {
+        return geographies.map(geography => {
           const datum = Object.prototype.hasOwnProperty.call(dataById, geography[geoKey])
             ? dataById[geography[geoKey]]
             : undefined;
@@ -58,9 +53,9 @@ export default function Choropleth({ series, legend, ...restOfProps }) {
               fillInitial={fillInitial}
             />
           );
-        })
-      }
-    </MapFactory>
+        });
+      }}
+    />
   );
 }
 
@@ -74,3 +69,5 @@ Choropleth.propTypes = {
 Choropleth.defaultProps = {
   legend: undefined
 };
+
+export default Ortelius(Choropleth);

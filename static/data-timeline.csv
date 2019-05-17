@@ -1,274 +1,274 @@
-ID;Région;2007;2008
-AT11;Burgenland (AT);1.60;-0.10
-AT12;Niederösterreich;1.20;-0.10
-AT13;Wien;2.00;-0.10
-AT21;Kärnten;1.20;-0.20
-AT22;Steiermark;1.00;-0.20
-AT31;Oberösterreich;1.00;-0.30
-AT32;Salzburg;-0.10;-0.30
-AT33;Tirol;0.50;-0.30
-AT34;Vorarlberg;-0.70;-0.30
-BE10;Région de Bruxelles-Capitale / Brussels Hoofdstedelijk Gewest;-0.30;-0.40
-BE21;Prov. Antwerpen;1.10;-0.40
-BE22;Prov. Limburg (BE);-0.50;-0.50
-BE23;Prov. Oost-Vlaanderen;-0.60;-0.50
-BE24;Prov. Vlaams-Brabant;1.40;-0.50
-BE25;Prov. West-Vlaanderen;0.70;-0.60
-BE31;Prov. Brabant Wallon;0.90;-0.60
-BE32;Prov. Hainaut;-1.00;-0.60
-BE33;Prov. Liège;0.20;-0.60
-BE34;Prov. Luxembourg (BE);1.00;-0.60
-BE35;Prov. Namur;1.20;-0.60
-BG31;Severozapaden;1.60;-0.70
-BG32;Severen tsentralen;-1.40;-0.70
-BG33;Severoiztochen;-1.00;-0.70
-BG34;Yugoiztochen;1.40;-0.80
-BG41;Yugozapaden;1.40;-0.80
-BG42;Yuzhen tsentralen;1.50;-1.00
-CZ01;Praha;-0.20;-1.00
-CZ02;Strední Cechy;-0.30;-1.00
-CZ03;Jihozápad;-0.40;-1.00
-CZ04;Severozápad;-4.30;-1.10
-CZ05;Severovýchod;-0.80;-1.10
-CZ06;Jihovýchod;-1.50;-1.10
-CZ07;Strední Morava;-2.10;-1.10
-CZ08;Moravskoslezsko;-1.60;-1.10
-DE11;Stuttgart;-1.80;-1.10
-DE12;Karlsruhe;-2.40;-1.20
-DE13;Freiburg;-1.30;-1.20
-DE14;Tübingen;-2.00;-1.30
-DE21;Oberbayern;-2.00;-1.30
-DE22;Niederbayern;-2.90;-1.30
-DE23;Oberpfalz;-2.40;-1.40
-DE24;Oberfranken;-4.40;-1.40
-DE25;Mittelfranken;-4.20;-1.50
-DE26;Unterfranken;-3.40;-1.50
-DE27;Schwaben;-2.30;-1.60
-DE30;Berlin;-8.60;-1.70
-DE40;Brandenburg;-9.20;-1.70
-DE50;Bremen;-6.50;-1.80
-DE60;Hamburg;-4.90;-1.80
-DE71;Darmstadt;-3.20;-1.90
-DE72;Gießen;-3.20;-11.20
-DE73;Kassel;-4.30;-11.30
-DE80;Mecklenburg-Vorpommern;-11.20;-2.00
-DE91;Braunschweig;-4.30;-2.00
-DE92;Hannover;-3.70;-2.00
-DE93;Lüneburg;-4.10;-2.10
-DE94;Weser-Ems;-3.50;-2.30
-DEA1;Düsseldorf;-3.70;-2.30
-DEA2;Köln;-3.90;-2.40
-DEA3;Münster;-3.00;-2.40
-DEA4;Detmold;-4.00;-2.40
-DEA5;Arnsberg;-4.70;-2.40
-DEB1;Koblenz;-2.90;-2.50
-DEB2;Trier;-2.60;-2.60
-DEB3;Rheinhessen-Pfalz;-1.80;-2.70
-DED2;Dresden;-8.50;-2.70
-DED4;Chemnitz;-9.50;-2.90
-DED5;Leipzig;-11.30;-2.90
-DEE0;Sachsen-Anhalt;-8.30;-3.00
-DEF0;Schleswig-Holstein;-4.00;-3.20
-DEG0;Thüringen;-8.70;-3.20
-DK01;Hovedstaden;2.30;-3.20
-DK02;Sjælland;2.60;-3.30
-DK03;Syddanmark;2.80;-3.30
-DK04;Midtjylland;2.20;-3.40
-DK05;Nordjylland;1.80;-3.50
-EE00;Eesti;2.20;-3.50
-EL30;Attiki;15.20;-3.50
-EL41;Voreio Aigaio;10.20;-3.60
-EL42;Notio Aigaio;8.10;-3.60
-EL43;Kriti;17.20;-3.70
-EL11;Anatoliki Makedonia, Thraki;12.90;-3.70
-EL12;Kentriki Makedonia;15.40;-3.70
-EL13;Dytiki Makedonia;19.20;-3.70
-EL21;Ipeiros;14.40;-3.80
-EL14;Thessalia;17.70;-3.90
-EL22;Ionia Nisia;7.00;-3.90
-EL23;Dytiki Ellada;19.90;-4.00
-EL24;Sterea Ellada;15.60;-4.00
-EL25;Peloponnisos;11.80;-4.10
-ES11;Galicia;9.60;-4.20
-ES12;Principado de Asturias;9.20;-4.30
-ES13;Cantabria;8.90;-4.30
-ES21;País Vasco;6.40;-4.30
-ES22;Comunidad Foral de Navarra;7.80;-4.40
-ES23;La Rioja;7.70;-4.40
-ES24;Aragón;9.50;-4.50
-ES30;Comunidad de Madrid;9.50;-4.50
-ES41;Castilla y León;8.70;-4.70
-ES42;Castilla-la Mancha;15.90;-4.90
-ES43;Extremadura;14.50;-5.10
-ES51;Cataluña;9.20;-6.30
-ES52;Comunidad Valenciana;11.90;-6.50
-ES53;Illes Balears;6.70;-7.20
-ES61;Andalucía;16.10;-8.30
-ES62;Región de Murcia;12.30;-8.50
-ES63;Ciudad Autónoma de Ceuta (ES);3.90;-8.60
-ES64;Ciudad Autónoma de Melilla (ES);12.60;-8.70
-ES70;Canarias (ES);15.60;-9.20
-FI19;Länsi-Suomi;2.90;-9.50
-FI1B;Helsinki-Uusimaa;2.40;0.00
-FI1C;Etelä-Suomi;2.40;0.00
-FI1D;Pohjois- ja Itä-Suomi;0.30;0.20
-FI20;Åland;0.30;0.20
-FR10;Île de France;1.40;0.30
-FR21;Champagne-Ardenne;3.30;0.30
-FR22;Picardie;1.70;0.30
-FR23;Haute-Normandie;2.90;0.30
-FR24;Centre (FR);4.10;0.30
-FR25;Basse-Normandie;3.00;0.30
-FR26;Bourgogne;2.80;0.40
-FR30;Nord - Pas-de-Calais;2.00;0.50
-FR41;Lorraine;4.30;0.50
-FR42;Alsace;5.00;0.50
-FR43;Franche-Comté;1.00;0.50
-FR51;Pays de la Loire;2.90;0.60
-FR52;Bretagne;1.90;0.60
-FR53;Poitou-Charentes;2.50;0.60
-FR61;Aquitaine;3.20;0.70
-FR62;Midi-Pyrénées;0.70;0.70
-FR63;Limousin;0.30;0.70
-FR71;Rhône-Alpes;1.80;0.80
-FR72;Auvergne;-1.10;0.90
-FR81;Languedoc-Roussillon;1.90;0.90
-FR82;Provence-Alpes-Côte d'Azur;1.60;0.90
-FR83;Corse;-2.50;0.90
-HR01;Kontinentalna Hrvatska, a;2.30;1.00
-HR02;Kontinentalna Hrvatska, b;2.30;1.00
-HR03;Jadranska Hrvatska;5.00;1.00
-HU10;Közép-Magyarország;-1.00;1.00
-HU21;Közép-Dunántúl;-1.90;1.00
-HU22;Nyugat-Dunántúl;-2.40;1.00
-HU23;Dél-Dunántúl;-3.70;1.00
-HU31;Észak-Magyarország;-6.30;1.10
-HU32;Észak-Alföld;-1.40;1.10
-HU33;Dél-Alföld;-2.40;1.10
-IE01;Border, Midland and Western;4.20;1.10
-IE02;Southern and Eastern;2.90;1.20
-ITC1;Piemonte;5.20;1.20
-ITC2;Valle d'Aosta/Vallée d'Aoste;5.50;1.20
-ITC3;Liguria;5.00;1.20
-ITC4;Lombardia;4.00;1.30
-ITF1;Abruzzo;5.90;1.40
-ITF2;Molise;4.70;1.40
-ITF3;Campania;9.20;1.40
-ITF4;Puglia;8.30;1.40
-ITF5;Basilicata;3.90;1.50
-ITF6;Calabria;12.10;1.60
-ITG1;Sicilia;9.20;1.60
-ITG2;Sardegna;7.50;1.60
-ITH1;Provincia Autonoma di Bolzano/Bozen;1.10;1.70
-ITH2;Provincia Autonoma di Trento;4.00;1.70
-ITH3;Veneto;3.40;1.80
-ITH4;Friuli-Venezia Giulia;4.20;1.80
-ITH5;Emilia-Romagna;4.10;1.80
-ITI1;Toscana;5.10;1.80
-ITI2;Umbria;5.00;1.80
-ITI3;Marche;6.50;1.90
-ITI4;Lazio;4.80;1.90
-LT00;Lietuva;3.60;10.20
-LU00;Luxembourg;2.20;11.80
-LV00;Latvija;3.50;11.90
-NL11;Groningen;3.30;12.10
-NL12;Friesland (NL);3.50;12.30
-NL13;Drenthe;2.80;12.60
-NL21;Overijssel;3.00;12.90
-NL22;Gelderland;2.90;14.40
-NL23;Flevoland;3.90;14.50
-NL31;Utrecht;2.30;15.20
-NL32;Noord-Holland;2.50;15.40
-NL33;Zuid-Holland;3.60;15.60
-NL34;Zeeland;1.80;15.60
-NL41;Noord-Brabant;2.50;15.90
-NL42;Limburg (NL);1.80;16.10
-NO01;Oslo og Akershus;2.10;17.20
-NO02;Hedmark og Oppland;2.30;17.70
-NO03;Sør-Østlandet;2.20;19.20
-NO04;Agder og Rogaland;3.60;19.90
-NO05;Vestlandet;2.50;2.00
-NO06;Trøndelag;0.90;2.00
-NO07;Nord-Norge;0.50;2.10
-PL11;Lódzkie;-3.70;2.20
-PL12;Mazowieckie;-3.60;2.20
-PL21;Malopolskie;-3.30;2.20
-PL22;Slaskie;-2.70;2.20
-PL31;Lubelskie;-1.50;2.30
-PL32;Podkarpackie;-0.10;2.30
-PL33;Swietokrzyskie;-3.20;2.30
-PL34;Podlaskie;-2.30;2.30
-PL41;Wielkopolskie;-3.50;2.30
-PL42;Zachodniopomorskie;-4.50;2.40
-PL43;Lubuskie;-5.10;2.40
-PL51;Dolnoslaskie;-7.20;2.50
-PL52;Opolskie;-4.40;2.50
-PL61;Kujawsko-Pomorskie;-3.90;2.50
-PL62;Warminsko-Mazurskie;-1.70;2.50
-PL63;Pomorskie;-3.80;2.50
-PT11;Norte;2.70;2.60
-PT15;Algarve;2.60;2.60
-PT16;Centro (PT);2.90;2.70
-PT17;Área Metropolitana de Lisboa;2.90;2.80
-PT18;Alentejo;3.80;2.80
-PT20;Região Autónoma dos Açores (PT);6.90;2.80
-PT30;Região Autónoma da Madeira (PT);6.20;2.90
-RO11;Nord-Vest;0.00;2.90
-RO12;Centru;-3.30;2.90
-RO21;Nord-Est;-2.00;2.90
-RO22;Sud-Est;-0.80;2.90
-RO31;Sud - Muntenia;0.70;2.90
-RO32;Bucuresti - Ilfov;0.60;2.90
-RO41;Sud-Vest Oltenia;3.10;3.00
-RO42;Vest;-0.70;3.00
-SE11;Stockholm;0.90;3.10
-SE12;Östra Mellansverige;1.00;3.20
-SE21;Småland med öarna;1.10;3.30
-SE22;Sydsverige;1.30;3.30
-SE23;Västsverige;0.60;3.40
-SE31;Norra Mellansverige;1.20;3.50
-SE32;Mellersta Norrland;0.50;3.50
-SE33;Övre Norrland;-1.00;3.60
-SI01;Vzhodna Slovenija;1.10;3.60
-SI02;Zahodna Slovenija;0.50;3.60
-SK01;Bratislavský kraj;0.80;3.80
-SK02;Západné Slovensko;-0.10;3.90
-SK03;Stredné Slovensko;-4.50;3.90
-SK04;Východné Slovensko;-1.70;3.90
-UKC1;Tees Valley and Durham;1.00;4.00
-UKC2;Northumberland and Tyne and Wear;0.90;4.00
-UKD1;Cumbria;0.40;4.10
-UKD3;Greater Manchester;-0.30;4.10
-UKD4;Lancashire;-1.20;4.20
-UKD6;Cheshire;0.30;4.20
-UKD7;Merseyside;-2.70;4.30
-UKE1;East Yorkshire and Northern Lincolnshire;-0.60;4.70
-UKE2;North Yorkshire;-0.60;4.80
-UKE3;South Yorkshire;1.00;5.00
-UKE4;West Yorkshire;0.20;5.00
-UKF1;Derbyshire and Nottinghamshire;-1.30;5.00
-UKF2;Leicestershire, Rutland and Northamptonshire;0.00;5.00
-UKF3;Lincolnshire;-1.10;5.10
-UKG1;Herefordshire, Worcestershire and Warwickshire;-0.20;5.20
-UKG2;Shropshire and Staffordshire;-1.10;5.50
-UKG3;West Midlands;-0.50;5.90
-UKH1;East Anglia;-0.60;6.20
-UKH2;Bedfordshire and Hertfordshire;-0.60;6.40
-UKH3;Essex;-1.10;6.50
-UKJ1;Berkshire, Buckinghamshire and Oxfordshire;-1.30;6.70
-UKJ2;Surrey, East and West Sussex;-0.40;6.90
-UKJ3;Hampshire and Isle of Wight;-0.60;7.00
-UKJ4;Kent;-1.10;7.50
-UKK1;Gloucestershire, Wiltshire and Bristol/Bath area;0.30;7.70
-UKK2;Dorset and Somerset;0.60;7.80
-UKK3;Cornwall and Isles of Scilly;-0.70;8.10
-UKK4;Devon;-1.10;8.30
-UKL1;West Wales and The Valleys;-0.50;8.70
-UKL2;East Wales;-1.20;8.90
-UKM2;Eastern Scotland;-0.30;9.20
-UKM3;South Western Scotland;0.30;9.20
-UKM5;North Eastern Scotland;1.70;9.20
-UKM6;Highlands and Islands;2.50;9.20
-UKN0;Northern Ireland (UK);1.80;9.50
-UKI1;Inner London;-3.50;9.50
-UKI2;Outer London;-3.60;9.60
+ID;Région;2007;2008;2009;2010;2011
+AT11;Burgenland (AT);1.60;-0.10;1.60;-0.10;1.60
+AT12;Niederösterreich;1.20;-0.10;1.20;-0.10;1.20
+AT13;Wien;2.00;-0.10;2.00;-0.10;2.00
+AT21;Kärnten;1.20;-0.20;1.20;-0.20;1.20
+AT22;Steiermark;1.00;-0.20;1.00;-0.20;1.00
+AT31;Oberösterreich;1.00;-0.30;1.00;-0.30;1.00
+AT32;Salzburg;-0.10;-0.30;-0.10;-0.30;-0.10
+AT33;Tirol;0.50;-0.30;0.50;-0.30;0.50
+AT34;Vorarlberg;-0.70;-0.30;-0.70;-0.30;-0.70
+BE10;Région de Bruxelles-Capitale / Brussels Hoofdstedelijk Gewest;-0.30;-0.40;-0.30;-0.40;-0.30
+BE21;Prov. Antwerpen;1.10;-0.40;1.10;-0.40;1.10
+BE22;Prov. Limburg (BE);-0.50;-0.50;-0.50;-0.50;-0.50
+BE23;Prov. Oost-Vlaanderen;-0.60;-0.50;-0.60;-0.50;-0.60
+BE24;Prov. Vlaams-Brabant;1.40;-0.50;1.40;-0.50;1.40
+BE25;Prov. West-Vlaanderen;0.70;-0.60;0.70;-0.60;0.70
+BE31;Prov. Brabant Wallon;0.90;-0.60;0.90;-0.60;0.90
+BE32;Prov. Hainaut;-1.00;-0.60;-1.00;-0.60;-1.00
+BE33;Prov. Liège;0.20;-0.60;0.20;-0.60;0.20
+BE34;Prov. Luxembourg (BE);1.00;-0.60;1.00;-0.60;1.00
+BE35;Prov. Namur;1.20;-0.60;1.20;-0.60;1.20
+BG31;Severozapaden;1.60;-0.70;1.60;-0.70;1.60
+BG32;Severen tsentralen;-1.40;-0.70;-1.40;-0.70;-1.40
+BG33;Severoiztochen;-1.00;-0.70;-1.00;-0.70;-1.00
+BG34;Yugoiztochen;1.40;-0.80;1.40;-0.80;1.40
+BG41;Yugozapaden;1.40;-0.80;1.40;-0.80;1.40
+BG42;Yuzhen tsentralen;1.50;-1.00;1.50;-1.00;1.50
+CZ01;Praha;-0.20;-1.00;-0.20;-1.00;-0.20
+CZ02;Strední Cechy;-0.30;-1.00;-0.30;-1.00;-0.30
+CZ03;Jihozápad;-0.40;-1.00;-0.40;-1.00;-0.40
+CZ04;Severozápad;-4.30;-1.10;-4.30;-1.10;-4.30
+CZ05;Severovýchod;-0.80;-1.10;-0.80;-1.10;-0.80
+CZ06;Jihovýchod;-1.50;-1.10;-1.50;-1.10;-1.50
+CZ07;Strední Morava;-2.10;-1.10;-2.10;-1.10;-2.10
+CZ08;Moravskoslezsko;-1.60;-1.10;-1.60;-1.10;-1.60
+DE11;Stuttgart;-1.80;-1.10;-1.80;-1.10;-1.80
+DE12;Karlsruhe;-2.40;-1.20;-2.40;-1.20;-2.40
+DE13;Freiburg;-1.30;-1.20;-1.30;-1.20;-1.30
+DE14;Tübingen;-2.00;-1.30;-2.00;-1.30;-2.00
+DE21;Oberbayern;-2.00;-1.30;-2.00;-1.30;-2.00
+DE22;Niederbayern;-2.90;-1.30;-2.90;-1.30;-2.90
+DE23;Oberpfalz;-2.40;-1.40;-2.40;-1.40;-2.40
+DE24;Oberfranken;-4.40;-1.40;-4.40;-1.40;-4.40
+DE25;Mittelfranken;-4.20;-1.50;-4.20;-1.50;-4.20
+DE26;Unterfranken;-3.40;-1.50;-3.40;-1.50;-3.40
+DE27;Schwaben;-2.30;-1.60;-2.30;-1.60;-2.30
+DE30;Berlin;-8.60;-1.70;-8.60;-1.70;-8.60
+DE40;Brandenburg;-9.20;-1.70;-9.20;-1.70;-9.20
+DE50;Bremen;-6.50;-1.80;-6.50;-1.80;-6.50
+DE60;Hamburg;-4.90;-1.80;-4.90;-1.80;-4.90
+DE71;Darmstadt;-3.20;-1.90;-3.20;-1.90;-3.20
+DE72;Gießen;-3.20;-11.20;-3.20;-11.20;-3.20
+DE73;Kassel;-4.30;-11.30;-4.30;-11.30;-4.30
+DE80;Mecklenburg-Vorpommern;-11.20;-2.00;-11.20;-2.00;-11.20
+DE91;Braunschweig;-4.30;-2.00;-4.30;-2.00;-4.30
+DE92;Hannover;-3.70;-2.00;-3.70;-2.00;-3.70
+DE93;Lüneburg;-4.10;-2.10;-4.10;-2.10;-4.10
+DE94;Weser-Ems;-3.50;-2.30;-3.50;-2.30;-3.50
+DEA1;Düsseldorf;-3.70;-2.30;-3.70;-2.30;-3.70
+DEA2;Köln;-3.90;-2.40;-3.90;-2.40;-3.90
+DEA3;Münster;-3.00;-2.40;-3.00;-2.40;-3.00
+DEA4;Detmold;-4.00;-2.40;-4.00;-2.40;-4.00
+DEA5;Arnsberg;-4.70;-2.40;-4.70;-2.40;-4.70
+DEB1;Koblenz;-2.90;-2.50;-2.90;-2.50;-2.90
+DEB2;Trier;-2.60;-2.60;-2.60;-2.60;-2.60
+DEB3;Rheinhessen-Pfalz;-1.80;-2.70;-1.80;-2.70;-1.80
+DED2;Dresden;-8.50;-2.70;-8.50;-2.70;-8.50
+DED4;Chemnitz;-9.50;-2.90;-9.50;-2.90;-9.50
+DED5;Leipzig;-11.30;-2.90;-11.30;-2.90;-11.30
+DEE0;Sachsen-Anhalt;-8.30;-3.00;-8.30;-3.00;-8.30
+DEF0;Schleswig-Holstein;-4.00;-3.20;-4.00;-3.20;-4.00
+DEG0;Thüringen;-8.70;-3.20;-8.70;-3.20;-8.70
+DK01;Hovedstaden;2.30;-3.20;2.30;-3.20;2.30
+DK02;Sjælland;2.60;-3.30;2.60;-3.30;2.60
+DK03;Syddanmark;2.80;-3.30;2.80;-3.30;2.80
+DK04;Midtjylland;2.20;-3.40;2.20;-3.40;2.20
+DK05;Nordjylland;1.80;-3.50;1.80;-3.50;1.80
+EE00;Eesti;2.20;-3.50;2.20;-3.50;2.20
+EL30;Attiki;15.20;-3.50;15.20;-3.50;15.20
+EL41;Voreio Aigaio;10.20;-3.60;10.20;-3.60;10.20
+EL42;Notio Aigaio;8.10;-3.60;8.10;-3.60;8.10
+EL43;Kriti;17.20;-3.70;17.20;-3.70;17.20
+EL11;Anatoliki Makedonia, Thraki;12.90;-3.70;12.90;-3.70;12.90
+EL12;Kentriki Makedonia;15.40;-3.70;15.40;-3.70;15.40
+EL13;Dytiki Makedonia;19.20;-3.70;19.20;-3.70;19.20
+EL21;Ipeiros;14.40;-3.80;14.40;-3.80;14.40
+EL14;Thessalia;17.70;-3.90;17.70;-3.90;17.70
+EL22;Ionia Nisia;7.00;-3.90;7.00;-3.90;7.00
+EL23;Dytiki Ellada;19.90;-4.00;19.90;-4.00;19.90
+EL24;Sterea Ellada;15.60;-4.00;15.60;-4.00;15.60
+EL25;Peloponnisos;11.80;-4.10;11.80;-4.10;11.80
+ES11;Galicia;9.60;-4.20;9.60;-4.20;9.60
+ES12;Principado de Asturias;9.20;-4.30;9.20;-4.30;9.20
+ES13;Cantabria;8.90;-4.30;8.90;-4.30;8.90
+ES21;País Vasco;6.40;-4.30;6.40;-4.30;6.40
+ES22;Comunidad Foral de Navarra;7.80;-4.40;7.80;-4.40;7.80
+ES23;La Rioja;7.70;-4.40;7.70;-4.40;7.70
+ES24;Aragón;9.50;-4.50;9.50;-4.50;9.50
+ES30;Comunidad de Madrid;9.50;-4.50;9.50;-4.50;9.50
+ES41;Castilla y León;8.70;-4.70;8.70;-4.70;8.70
+ES42;Castilla-la Mancha;15.90;-4.90;15.90;-4.90;15.90
+ES43;Extremadura;14.50;-5.10;14.50;-5.10;14.50
+ES51;Cataluña;9.20;-6.30;9.20;-6.30;9.20
+ES52;Comunidad Valenciana;11.90;-6.50;11.90;-6.50;11.90
+ES53;Illes Balears;6.70;-7.20;6.70;-7.20;6.70
+ES61;Andalucía;16.10;-8.30;16.10;-8.30;16.10
+ES62;Región de Murcia;12.30;-8.50;12.30;-8.50;12.30
+ES63;Ciudad Autónoma de Ceuta (ES);3.90;-8.60;3.90;-8.60;3.90
+ES64;Ciudad Autónoma de Melilla (ES);12.60;-8.70;12.60;-8.70;12.60
+ES70;Canarias (ES);15.60;-9.20;15.60;-9.20;15.60
+FI19;Länsi-Suomi;2.90;-9.50;2.90;-9.50;2.90
+FI1B;Helsinki-Uusimaa;2.40;0.00;2.40;0.00;2.40
+FI1C;Etelä-Suomi;2.40;0.00;2.40;0.00;2.40
+FI1D;Pohjois- ja Itä-Suomi;0.30;0.20;0.30;0.20;0.30
+FI20;Åland;0.30;0.20;0.30;0.20;0.30
+FR10;Île de France;1.40;0.30;1.40;0.30;1.40
+FR21;Champagne-Ardenne;3.30;0.30;3.30;0.30;3.30
+FR22;Picardie;1.70;0.30;1.70;0.30;1.70
+FR23;Haute-Normandie;2.90;0.30;2.90;0.30;2.90
+FR24;Centre (FR);4.10;0.30;4.10;0.30;4.10
+FR25;Basse-Normandie;3.00;0.30;3.00;0.30;3.00
+FR26;Bourgogne;2.80;0.40;2.80;0.40;2.80
+FR30;Nord - Pas-de-Calais;2.00;0.50;2.00;0.50;2.00
+FR41;Lorraine;4.30;0.50;4.30;0.50;4.30
+FR42;Alsace;5.00;0.50;5.00;0.50;5.00
+FR43;Franche-Comté;1.00;0.50;1.00;0.50;1.00
+FR51;Pays de la Loire;2.90;0.60;2.90;0.60;2.90
+FR52;Bretagne;1.90;0.60;1.90;0.60;1.90
+FR53;Poitou-Charentes;2.50;0.60;2.50;0.60;2.50
+FR61;Aquitaine;3.20;0.70;3.20;0.70;3.20
+FR62;Midi-Pyrénées;0.70;0.70;0.70;0.70;0.70
+FR63;Limousin;0.30;0.70;0.30;0.70;0.30
+FR71;Rhône-Alpes;1.80;0.80;1.80;0.80;1.80
+FR72;Auvergne;-1.10;0.90;-1.10;0.90;-1.10
+FR81;Languedoc-Roussillon;1.90;0.90;1.90;0.90;1.90
+FR82;Provence-Alpes-Côte d'Azur;1.60;0.90;1.60;0.90;1.60
+FR83;Corse;-2.50;0.90;-2.50;0.90;-2.50
+HR01;Kontinentalna Hrvatska, a;2.30;1.00;2.30;1.00;2.30
+HR02;Kontinentalna Hrvatska, b;2.30;1.00;2.30;1.00;2.30
+HR03;Jadranska Hrvatska;5.00;1.00;5.00;1.00;5.00
+HU10;Közép-Magyarország;-1.00;1.00;-1.00;1.00;-1.00
+HU21;Közép-Dunántúl;-1.90;1.00;-1.90;1.00;-1.90
+HU22;Nyugat-Dunántúl;-2.40;1.00;-2.40;1.00;-2.40
+HU23;Dél-Dunántúl;-3.70;1.00;-3.70;1.00;-3.70
+HU31;Észak-Magyarország;-6.30;1.10;-6.30;1.10;-6.30
+HU32;Észak-Alföld;-1.40;1.10;-1.40;1.10;-1.40
+HU33;Dél-Alföld;-2.40;1.10;-2.40;1.10;-2.40
+IE01;Border, Midland and Western;4.20;1.10;4.20;1.10;4.20
+IE02;Southern and Eastern;2.90;1.20;2.90;1.20;2.90
+ITC1;Piemonte;5.20;1.20;5.20;1.20;5.20
+ITC2;Valle d'Aosta/Vallée d'Aoste;5.50;1.20;5.50;1.20;5.50
+ITC3;Liguria;5.00;1.20;5.00;1.20;5.00
+ITC4;Lombardia;4.00;1.30;4.00;1.30;4.00
+ITF1;Abruzzo;5.90;1.40;5.90;1.40;5.90
+ITF2;Molise;4.70;1.40;4.70;1.40;4.70
+ITF3;Campania;9.20;1.40;9.20;1.40;9.20
+ITF4;Puglia;8.30;1.40;8.30;1.40;8.30
+ITF5;Basilicata;3.90;1.50;3.90;1.50;3.90
+ITF6;Calabria;12.10;1.60;12.10;1.60;12.10
+ITG1;Sicilia;9.20;1.60;9.20;1.60;9.20
+ITG2;Sardegna;7.50;1.60;7.50;1.60;7.50
+ITH1;Provincia Autonoma di Bolzano/Bozen;1.10;1.70;1.10;1.70;1.10
+ITH2;Provincia Autonoma di Trento;4.00;1.70;4.00;1.70;4.00
+ITH3;Veneto;3.40;1.80;3.40;1.80;3.40
+ITH4;Friuli-Venezia Giulia;4.20;1.80;4.20;1.80;4.20
+ITH5;Emilia-Romagna;4.10;1.80;4.10;1.80;4.10
+ITI1;Toscana;5.10;1.80;5.10;1.80;5.10
+ITI2;Umbria;5.00;1.80;5.00;1.80;5.00
+ITI3;Marche;6.50;1.90;6.50;1.90;6.50
+ITI4;Lazio;4.80;1.90;4.80;1.90;4.80
+LT00;Lietuva;3.60;10.20;3.60;10.20;3.60
+LU00;Luxembourg;2.20;11.80;2.20;11.80;2.20
+LV00;Latvija;3.50;11.90;3.50;11.90;3.50
+NL11;Groningen;3.30;12.10;3.30;12.10;3.30
+NL12;Friesland (NL);3.50;12.30;3.50;12.30;3.50
+NL13;Drenthe;2.80;12.60;2.80;12.60;2.80
+NL21;Overijssel;3.00;12.90;3.00;12.90;3.00
+NL22;Gelderland;2.90;14.40;2.90;14.40;2.90
+NL23;Flevoland;3.90;14.50;3.90;14.50;3.90
+NL31;Utrecht;2.30;15.20;2.30;15.20;2.30
+NL32;Noord-Holland;2.50;15.40;2.50;15.40;2.50
+NL33;Zuid-Holland;3.60;15.60;3.60;15.60;3.60
+NL34;Zeeland;1.80;15.60;1.80;15.60;1.80
+NL41;Noord-Brabant;2.50;15.90;2.50;15.90;2.50
+NL42;Limburg (NL);1.80;16.10;1.80;16.10;1.80
+NO01;Oslo og Akershus;2.10;17.20;2.10;17.20;2.10
+NO02;Hedmark og Oppland;2.30;17.70;2.30;17.70;2.30
+NO03;Sør-Østlandet;2.20;19.20;2.20;19.20;2.20
+NO04;Agder og Rogaland;3.60;19.90;3.60;19.90;3.60
+NO05;Vestlandet;2.50;2.00;2.50;2.00;2.50
+NO06;Trøndelag;0.90;2.00;0.90;2.00;0.90
+NO07;Nord-Norge;0.50;2.10;0.50;2.10;0.50
+PL11;Lódzkie;-3.70;2.20;-3.70;2.20;-3.70
+PL12;Mazowieckie;-3.60;2.20;-3.60;2.20;-3.60
+PL21;Malopolskie;-3.30;2.20;-3.30;2.20;-3.30
+PL22;Slaskie;-2.70;2.20;-2.70;2.20;-2.70
+PL31;Lubelskie;-1.50;2.30;-1.50;2.30;-1.50
+PL32;Podkarpackie;-0.10;2.30;-0.10;2.30;-0.10
+PL33;Swietokrzyskie;-3.20;2.30;-3.20;2.30;-3.20
+PL34;Podlaskie;-2.30;2.30;-2.30;2.30;-2.30
+PL41;Wielkopolskie;-3.50;2.30;-3.50;2.30;-3.50
+PL42;Zachodniopomorskie;-4.50;2.40;-4.50;2.40;-4.50
+PL43;Lubuskie;-5.10;2.40;-5.10;2.40;-5.10
+PL51;Dolnoslaskie;-7.20;2.50;-7.20;2.50;-7.20
+PL52;Opolskie;-4.40;2.50;-4.40;2.50;-4.40
+PL61;Kujawsko-Pomorskie;-3.90;2.50;-3.90;2.50;-3.90
+PL62;Warminsko-Mazurskie;-1.70;2.50;-1.70;2.50;-1.70
+PL63;Pomorskie;-3.80;2.50;-3.80;2.50;-3.80
+PT11;Norte;2.70;2.60;2.70;2.60;2.70
+PT15;Algarve;2.60;2.60;2.60;2.60;2.60
+PT16;Centro (PT);2.90;2.70;2.90;2.70;2.90
+PT17;Área Metropolitana de Lisboa;2.90;2.80;2.90;2.80;2.90
+PT18;Alentejo;3.80;2.80;3.80;2.80;3.80
+PT20;Região Autónoma dos Açores (PT);6.90;2.80;6.90;2.80;6.90
+PT30;Região Autónoma da Madeira (PT);6.20;2.90;6.20;2.90;6.20
+RO11;Nord-Vest;0.00;2.90;0.00;2.90;0.00
+RO12;Centru;-3.30;2.90;-3.30;2.90;-3.30
+RO21;Nord-Est;-2.00;2.90;-2.00;2.90;-2.00
+RO22;Sud-Est;-0.80;2.90;-0.80;2.90;-0.80
+RO31;Sud - Muntenia;0.70;2.90;0.70;2.90;0.70
+RO32;Bucuresti - Ilfov;0.60;2.90;0.60;2.90;0.60
+RO41;Sud-Vest Oltenia;3.10;3.00;3.10;3.00;3.10
+RO42;Vest;-0.70;3.00;-0.70;3.00;-0.70
+SE11;Stockholm;0.90;3.10;0.90;3.10;0.90
+SE12;Östra Mellansverige;1.00;3.20;1.00;3.20;1.00
+SE21;Småland med öarna;1.10;3.30;1.10;3.30;1.10
+SE22;Sydsverige;1.30;3.30;1.30;3.30;1.30
+SE23;Västsverige;0.60;3.40;0.60;3.40;0.60
+SE31;Norra Mellansverige;1.20;3.50;1.20;3.50;1.20
+SE32;Mellersta Norrland;0.50;3.50;0.50;3.50;0.50
+SE33;Övre Norrland;-1.00;3.60;-1.00;3.60;-1.00
+SI01;Vzhodna Slovenija;1.10;3.60;1.10;3.60;1.10
+SI02;Zahodna Slovenija;0.50;3.60;0.50;3.60;0.50
+SK01;Bratislavský kraj;0.80;3.80;0.80;3.80;0.80
+SK02;Západné Slovensko;-0.10;3.90;-0.10;3.90;-0.10
+SK03;Stredné Slovensko;-4.50;3.90;-4.50;3.90;-4.50
+SK04;Východné Slovensko;-1.70;3.90;-1.70;3.90;-1.70
+UKC1;Tees Valley and Durham;1.00;4.00;1.00;4.00;1.00
+UKC2;Northumberland and Tyne and Wear;0.90;4.00;0.90;4.00;0.90
+UKD1;Cumbria;0.40;4.10;0.40;4.10;0.40
+UKD3;Greater Manchester;-0.30;4.10;-0.30;4.10;-0.30
+UKD4;Lancashire;-1.20;4.20;-1.20;4.20;-1.20
+UKD6;Cheshire;0.30;4.20;0.30;4.20;0.30
+UKD7;Merseyside;-2.70;4.30;-2.70;4.30;-2.70
+UKE1;East Yorkshire and Northern Lincolnshire;-0.60;4.70;-0.60;4.70;-0.60
+UKE2;North Yorkshire;-0.60;4.80;-0.60;4.80;-0.60
+UKE3;South Yorkshire;1.00;5.00;1.00;5.00;1.00
+UKE4;West Yorkshire;0.20;5.00;0.20;5.00;0.20
+UKF1;Derbyshire and Nottinghamshire;-1.30;5.00;-1.30;5.00;-1.30
+UKF2;Leicestershire, Rutland and Northamptonshire;0.00;5.00;0.00;5.00;0.00
+UKF3;Lincolnshire;-1.10;5.10;-1.10;5.10;-1.10
+UKG1;Herefordshire, Worcestershire and Warwickshire;-0.20;5.20;-0.20;5.20;-0.20
+UKG2;Shropshire and Staffordshire;-1.10;5.50;-1.10;5.50;-1.10
+UKG3;West Midlands;-0.50;5.90;-0.50;5.90;-0.50
+UKH1;East Anglia;-0.60;6.20;-0.60;6.20;-0.60
+UKH2;Bedfordshire and Hertfordshire;-0.60;6.40;-0.60;6.40;-0.60
+UKH3;Essex;-1.10;6.50;-1.10;6.50;-1.10
+UKJ1;Berkshire, Buckinghamshire and Oxfordshire;-1.30;6.70;-1.30;6.70;-1.30
+UKJ2;Surrey, East and West Sussex;-0.40;6.90;-0.40;6.90;-0.40
+UKJ3;Hampshire and Isle of Wight;-0.60;7.00;-0.60;7.00;-0.60
+UKJ4;Kent;-1.10;7.50;-1.10;7.50;-1.10
+UKK1;Gloucestershire, Wiltshire and Bristol/Bath area;0.30;7.70;0.30;7.70;0.30
+UKK2;Dorset and Somerset;0.60;7.80;0.60;7.80;0.60
+UKK3;Cornwall and Isles of Scilly;-0.70;8.10;-0.70;8.10;-0.70
+UKK4;Devon;-1.10;8.30;-1.10;8.30;-1.10
+UKL1;West Wales and The Valleys;-0.50;8.70;-0.50;8.70;-0.50
+UKL2;East Wales;-1.20;8.90;-1.20;8.90;-1.20
+UKM2;Eastern Scotland;-0.30;9.20;-0.30;9.20;-0.30
+UKM3;South Western Scotland;0.30;9.20;0.30;9.20;0.30
+UKM5;North Eastern Scotland;1.70;9.20;1.70;9.20;1.70
+UKM6;Highlands and Islands;2.50;9.20;2.50;9.20;2.50
+UKN0;Northern Ireland (UK);1.80;9.50;1.80;9.50;1.80
+UKI1;Inner London;-3.50;9.50;-3.50;9.50;-3.50
+UKI2;Outer London;-3.60;9.60;-3.60;9.60;-3.60

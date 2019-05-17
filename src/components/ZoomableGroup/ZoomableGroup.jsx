@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { Fragment, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
 
-import zoomToBoundingBox from 'utils/zoomToBoundingBox';
+import { zoomToBoundingBox } from 'utils';
+
+import { OrteliusContext } from 'modules';
 
 import styles from './ZoomableGroup.module';
 
@@ -20,41 +22,35 @@ export function ZoomToggle({ onClick, containerRef }) {
   );
 }
 
-const initialZoom = {
-  zoomTransform: [0, 0, 1]
-};
+export default function ZoomableGroup({ height, width, containerRef, children }) {
+  const {
+    isZoomed,
+    zoom,
+    setHighlightedGeography,
+    setZoom,
+    resetZoom,
+    resetHighlightedGeography
+  } = useContext(OrteliusContext);
 
-export default function ZoomableGroup({ height, width, containerRef, onZoom, children }) {
-  const [isZoomed, setZoom] = useState(false);
-  const [{ zoomTransform }, setZoomTransform] = useSpring(() => initialZoom);
+  const zoomTransform = useSpring({ transform: zoom });
 
-  const handleZoomClick = ({ bounds, ...rest }) => {
-    const newZoom = true;
-
-    setZoom(newZoom);
-
-    setZoomTransform({
-      zoomTransform: zoomToBoundingBox({ bounds, width, height })
-    });
-
-    onZoom({ isZoomed: newZoom, ...rest });
+  const handleZoomClick = ({ bounds, geography, data }) => {
+    setZoom(zoomToBoundingBox({ bounds, width, height }));
+    setHighlightedGeography({ ...geography, ...data });
   };
 
   const handleToggleClick = () => {
-    const newZoom = false;
-
-    setZoom(false);
-
-    setZoomTransform(initialZoom);
-
-    onZoom({ isZoomed: newZoom });
+    resetZoom();
+    resetHighlightedGeography();
   };
 
   return (
     <ZoomContext.Provider value={{ handleZoomClick }}>
       {isZoomed && <ZoomToggle onClick={handleToggleClick} containerRef={containerRef} />}
       <animated.g
-        transform={zoomTransform.interpolate((x, y, s) => `translate(${x},${y}) scale(${s})`)}
+        transform={zoomTransform.transform.interpolate(
+          (x, y, s) => `translate(${x},${y}) scale(${s})`
+        )}
         className="zoomable-group"
       >
         {children}
@@ -65,8 +61,11 @@ export default function ZoomableGroup({ height, width, containerRef, onZoom, chi
 
 ZoomableGroup.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  containerRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired
 };
 
-ZoomableGroup.defaultProps = {};
+ZoomableGroup.defaultProps = {
+  containerRef: undefined
+};

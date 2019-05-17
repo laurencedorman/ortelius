@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import prepareGeoJson from 'utils/prepareGeoJson';
-import d3 from 'utils/d3-custom';
+import { d3, prepareGeoJson } from 'utils';
 
 export default class GeographyProvider extends React.PureComponent {
   static propTypes = {
@@ -54,6 +53,7 @@ export default class GeographyProvider extends React.PureComponent {
     const { render } = this.props;
 
     if (isLoading) {
+      //  @todo centralise and i18nise string
       return <div>Loading Geographies</div>;
     }
 
