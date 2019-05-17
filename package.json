@@ -1,6 +1,6 @@
 {
   "name": "ortelius",
-  "version": "0.0.1-beta.6",
+  "version": "0.0.1-beta.7",
   "description": "a tool for making good-looking maps",
   "main": "dist/index.js",
   "module": "src/index.js",
