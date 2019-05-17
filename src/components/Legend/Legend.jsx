@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Legend.module';
@@ -11,9 +11,14 @@ export default function Legend({ title, labels, scale }) {
 
   return (
     <div className={styles.Legend}>
+      {title && (
+        <header>
+          <h3>{title}</h3>
+        </header>
+      )}
       {legendItems.map((item, index) => {
         return (
-          <div key={`${item}-${index}`} className={styles.LegendItem}>
+          <div key={item} className={styles.LegendItem}>
             <i style={{ backgroundColor: item }} />
             <p>{labels[index]}</p>
           </div>

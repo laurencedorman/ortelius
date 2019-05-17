@@ -53,7 +53,7 @@ Map.propTypes = {
     labels: PropTypes.arrayOf(String)
   }),
   render: PropTypes.func.isRequired,
-  toolbar: PropTypes.object,
+  toolbar: Object,
   tooltip: PropTypes.shape({
     formatter: PropTypes.func
   }),
@@ -64,5 +64,6 @@ Map.defaultProps = {
   legend: undefined,
   margin: 10,
   projection: d3.geoMercator(),
+  toolbar: undefined,
   tooltip: undefined
 };

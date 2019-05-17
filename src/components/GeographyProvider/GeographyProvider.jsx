@@ -5,11 +5,14 @@ import { d3, prepareGeoJson } from 'utils';
 
 export default class GeographyProvider extends React.PureComponent {
   static propTypes = {
-    url: PropTypes.string.isRequired,
-    render: PropTypes.func.isRequired,
     filter: PropTypes.func,
     format: PropTypes.string,
-    simplifyFactor: PropTypes.number
+    height: PropTypes.number.isRequired,
+    projection: PropTypes.func.isRequired,
+    render: PropTypes.func.isRequired,
+    simplifyFactor: PropTypes.number,
+    url: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired
   };
 
   static defaultProps = {

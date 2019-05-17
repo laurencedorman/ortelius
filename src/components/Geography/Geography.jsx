@@ -6,7 +6,7 @@ import { ZoomContext } from 'components';
 
 import styles from './Geography.module';
 
-export function Geography({ path, projection, fillInitial, fillHover, stroke, geography, data }) {
+export function Geography({ path, fillInitial, fillHover, stroke, geography, data }) {
   const { handleZoomClick } = useContext(ZoomContext);
 
   const [isHover, toggleHover] = useState(false);
@@ -47,6 +47,13 @@ Geography.propTypes = {
     id: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   }),
+  geography: PropTypes.shape({
+    geometry: PropTypes.shape({
+      type: PropTypes.string,
+      coordinates: PropTypes.arrayOf(PropTypes.number)
+    }),
+    type: PropTypes.string
+  }).isRequired,
   fillHover: PropTypes.string,
   fillInitial: PropTypes.string,
   path: PropTypes.func.isRequired,

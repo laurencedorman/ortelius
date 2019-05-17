@@ -1,6 +1,7 @@
 import { actionTypes } from './actions';
 
 export default function reducers(state, action) {
+  // eslint-disable-next-line no-console
   console.log(state, action);
 
   switch (action.type) {

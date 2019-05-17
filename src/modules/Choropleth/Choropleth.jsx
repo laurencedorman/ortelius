@@ -60,6 +60,7 @@ export function Choropleth({ dataById, series, legend, ...passThroughProps }) {
 }
 
 Choropleth.propTypes = {
+  dataById: PropTypes.arrayOf(Object),
   series: PropTypes.arrayOf(Object).isRequired,
   legend: PropTypes.shape({
     labels: PropTypes.arrayOf(String)
