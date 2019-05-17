@@ -6,23 +6,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.ToolbarItem {
-  appearance: none;
-  background: transparent;
-  color: white;
-  border: none;
-  font-size: 14px;
-  height: 40px;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-
-  &.active {
-    background: white;
-    color: black;
-    border-radius: 50%;
-  }
-}

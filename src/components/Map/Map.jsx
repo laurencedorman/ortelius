@@ -8,16 +8,7 @@ import { d3, getDrawDims } from 'utils';
 const Annotations = () => null;
 const Markers = () => null;
 
-export default function Map({
-  margin,
-  geoAssets,
-  projection,
-  legend,
-  seriesKey,
-  toolbar,
-  render,
-  tooltip
-}) {
+export default function Map({ margin, geoAssets, projection, legend, toolbar, render, tooltip }) {
   const containerEl = useRef(null);
   const { clientHeight, clientWidth } = document.documentElement;
   const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin, toolbar);

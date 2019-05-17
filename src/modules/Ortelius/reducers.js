@@ -1,6 +1,8 @@
 import { actionTypes } from './actions';
 
 export default function reducers(state, action) {
+  console.log(state, action);
+
   switch (action.type) {
     case actionTypes.UPDATE_VALUE_KEY:
       return { ...state, valueKey: action.valueKey };

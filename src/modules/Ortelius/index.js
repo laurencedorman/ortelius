@@ -20,13 +20,17 @@ function prepareActions(actionFns, dispatch) {
 
 export default function withOrtelius(WrappedComponent) {
   function Ortelius({ series, ...passThroughProps }) {
-    const { data, value: initialValueKey, joinBy, dateTime } = series;
+    const { data, value: initialValueKey, joinBy, dateTime, compare } = series;
     const [geoKey, seriesKey] = joinBy;
 
     const [state, dispatch] = useReducer(
       reducers,
       getInitialState({
-        valueKey: dateTime ? dateTime.from : initialValueKey
+        valueKey: (() => {
+          return (
+            (dateTime && dateTime.from) || (compare && compare.options[0].value) || initialValueKey
+          );
+        })()
       })
     );
 
@@ -50,7 +54,12 @@ export default function withOrtelius(WrappedComponent) {
         dataById,
         geoKey,
         series,
-        toolbar: dateTime,
+        toolbar: (() => {
+          return (
+            (dateTime && { ...dateTime, type: 'datetime' }) ||
+            (compare && { ...compare, type: 'compare' })
+          );
+        })(),
         ...passThroughProps
       })
     );
