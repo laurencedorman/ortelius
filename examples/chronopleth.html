@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title></title>
   <style>
     body {
@@ -50,7 +50,10 @@
       SE: 'Suède',
       UK: 'Royaume-Uni'
     };
-    var map = Ortelius.fetchCSV(['./data-timeline.csv'], ';').then(function (data) {
+    var map = Ortelius.fetchCSV([{
+      url: './data-timeline.csv',
+      separator: ';'
+    }]).then(function (data) {
       return Ortelius.createMap({
         container: '#root',
         type: 'choropleth',
