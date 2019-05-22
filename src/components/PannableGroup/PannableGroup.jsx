@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { OrteliusContext } from 'modules';
 
+// @todo - very rough around the edges: missing smooth transition from zoom to pan
+// @todo - when zoomed, the pan is too sensitive
 const PannableGroup = ({ children, height, width }) => {
   const { zoom } = useContext(OrteliusContext);
 

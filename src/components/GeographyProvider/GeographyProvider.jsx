@@ -26,14 +26,12 @@ export default class GeographyProvider extends React.PureComponent {
 
     this.state = {
       isLoading: true,
-      geographies: [],
-      path: null,
-      projection: null
+      geojson: null
     };
   }
 
   async componentDidMount() {
-    const { url, height, width, projection, filter, format, simplifyFactor } = this.props;
+    const { url, filter, format, simplifyFactor } = this.props;
 
     const geojson = await fetch(url)
       .then(response => response.json())
@@ -41,25 +39,27 @@ export default class GeographyProvider extends React.PureComponent {
         return prepareGeoJson(format, geoAssets, filter, simplifyFactor);
       });
 
-    const geoProjection = projection.fitSize([width, height], geojson);
-
     this.setState({
       isLoading: false,
-      geographies: geojson.features,
-      projection: geoProjection,
-      path: d3.geoPath(geoProjection)
+      geojson
     });
   }
 
   render() {
-    const { isLoading, geographies, projection, path } = this.state;
-    const { render } = this.props;
+    const { isLoading, geojson } = this.state;
+    const { render, width, height, projection } = this.props;
 
     if (isLoading) {
       //  @todo centralise and i18nise string
       return <div>Loading Geographies</div>;
     }
 
-    return render({ geographies, projection, path });
+    const geoProjection = projection.fitSize([width, height], geojson);
+
+    return render({
+      geographies: geojson.features,
+      projection: geoProjection,
+      path: d3.geoPath(geoProjection)
+    });
   }
 }

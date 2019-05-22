@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -11,21 +11,28 @@ import {
 } from 'components';
 
 import { d3, getDrawDims } from 'utils';
+import { useDocumentDimensions } from 'hooks';
 
 const Annotations = () => null;
 const Markers = () => null;
 
 export default function Map({ margin, geoAssets, projection, legend, toolbar, render, tooltip }) {
   const containerEl = useRef(null);
-  const { clientHeight, clientWidth } = document.documentElement;
-  const { drawHeight, drawWidth } = getDrawDims(clientHeight, clientWidth, margin, toolbar);
+  const dimensions = useDocumentDimensions();
+
+  const { drawHeight, drawWidth } = getDrawDims(
+    dimensions.height,
+    dimensions.width,
+    margin,
+    toolbar
+  );
 
   const annotations = false;
   const markers = false;
 
   return (
     <div className="container" ref={containerEl}>
-      <svg width={clientWidth} height={clientHeight}>
+      <svg width={dimensions.width} height={dimensions.height}>
         <g className="map-container" transform={`translate(${margin},${margin})`}>
           <GeographyProvider
             height={drawHeight}
