@@ -8,7 +8,7 @@ import Toolbar from './Toolbar';
 
 import styles from './ComparisonToolbar.module';
 
-export default function ComparisonToolbar({ options, ...toolbarProps }) {
+export function ComparisonToolbar({ options, ...toolbarProps }) {
   const { setValueKey, valueKey } = useContext(OrteliusContext);
 
   return (
@@ -41,3 +41,5 @@ ComparisonToolbar.propTypes = {
     })
   ).isRequired
 };
+
+export default React.memo(ComparisonToolbar);

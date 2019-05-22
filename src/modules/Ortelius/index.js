@@ -54,12 +54,9 @@ export default function withOrtelius(WrappedComponent) {
         dataById,
         geoKey,
         series,
-        toolbar: (() => {
-          return (
-            (dateTime && { ...dateTime, type: 'datetime' }) ||
-            (compare && { ...compare, type: 'compare' })
-          );
-        })(),
+        toolbar:
+          (dateTime && { ...dateTime, type: 'datetime' }) ||
+          (compare && { ...compare, type: 'compare' }),
         ...passThroughProps
       })
     );

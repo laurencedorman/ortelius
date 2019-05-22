@@ -35,12 +35,10 @@ export function Geography({ path, fillInitial, fillHover, stroke, geography, dat
       stroke={stroke}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
-      onClick={handleZoomClick.bind(null, { bounds, geography, data })}
+      onDoubleClick={handleZoomClick.bind(null, { bounds, geography, data })}
     />
   );
 }
-
-export default Geography;
 
 Geography.propTypes = {
   data: PropTypes.shape({
@@ -49,8 +47,7 @@ Geography.propTypes = {
   }),
   geography: PropTypes.shape({
     geometry: PropTypes.shape({
-      type: PropTypes.string,
-      coordinates: PropTypes.arrayOf(PropTypes.number)
+      type: PropTypes.string
     }),
     type: PropTypes.string
   }).isRequired,
@@ -66,3 +63,5 @@ Geography.defaultProps = {
   fillInitial: '#ccc',
   stroke: '#000'
 };
+
+export default React.memo(Geography);

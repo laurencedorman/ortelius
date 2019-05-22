@@ -1,7 +1,14 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { GeographyProvider, Legend, Toolbar, Tooltip, ZoomableGroup } from 'components';
+import {
+  GeographyProvider,
+  Legend,
+  PannableGroup,
+  Toolbar,
+  Tooltip,
+  ZoomableGroup
+} from 'components';
 
 import { d3, getDrawDims } from 'utils';
 
@@ -27,9 +34,11 @@ export default function Map({ margin, geoAssets, projection, legend, toolbar, re
             {...geoAssets}
             render={geographyProps => (
               <ZoomableGroup containerRef={containerEl} height={drawHeight} width={drawWidth}>
-                {render({ ...geographyProps })}
-                {annotations && <Annotations annotations={annotations} />}
-                {markers && <Markers markers={markers} />}
+                <PannableGroup height={drawHeight} width={drawWidth}>
+                  {render({ ...geographyProps })}
+                  {annotations && <Annotations annotations={annotations} />}
+                  {markers && <Markers markers={markers} />}
+                </PannableGroup>
               </ZoomableGroup>
             )}
           />
@@ -53,7 +62,7 @@ Map.propTypes = {
     labels: PropTypes.arrayOf(String)
   }),
   render: PropTypes.func.isRequired,
-  toolbar: Object,
+  toolbar: PropTypes.object,
   tooltip: PropTypes.shape({
     formatter: PropTypes.func
   }),

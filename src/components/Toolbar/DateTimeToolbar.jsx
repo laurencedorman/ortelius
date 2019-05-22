@@ -9,7 +9,7 @@ import Toolbar from './Toolbar';
 
 import styles from './DateTimeToolbar.module';
 
-export default function DateTimeToolbar({
+export function DateTimeToolbar({
   interval,
   from: fromString,
   to: toString,
@@ -61,3 +61,5 @@ DateTimeToolbar.propTypes = {
 DateTimeToolbar.defaultProps = {
   format: 'YYYY MM-DDTHH:mm:ss SSS [Z] A'
 };
+
+export default React.memo(DateTimeToolbar);

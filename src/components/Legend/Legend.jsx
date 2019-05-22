@@ -6,7 +6,7 @@ import styles from './Legend.module';
 // @todo toggle legend
 // @todo make compatible with scaleLinear
 // @todo allow positioning; top-left, bottom-right etc
-export default function Legend({ title, labels, scale }) {
+export function Legend({ title, labels, scale }) {
   const legendItems = scale.range();
 
   return (
@@ -37,3 +37,5 @@ Legend.propTypes = {
 Legend.defaultProps = {
   title: ''
 };
+
+export default React.memo(Legend);

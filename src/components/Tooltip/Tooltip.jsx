@@ -7,7 +7,7 @@ import { OrteliusContext } from 'modules';
 import styles from './Tooltip.module';
 
 // @todo no data option
-export default function Tooltip({ formatter }) {
+const Tooltip = ({ formatter }) => {
   const { highlightedGeography } = useContext(OrteliusContext);
 
   if (!highlightedGeography) {
@@ -30,8 +30,10 @@ export default function Tooltip({ formatter }) {
       })}
     </div>
   );
-}
+};
 
 Tooltip.propTypes = {
   formatter: PropTypes.func.isRequired
 };
+
+export default React.memo(Tooltip);

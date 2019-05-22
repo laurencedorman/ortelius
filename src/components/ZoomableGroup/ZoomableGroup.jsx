@@ -22,7 +22,7 @@ export function ZoomToggle({ onClick, containerRef }) {
   );
 }
 
-export default function ZoomableGroup({ height, width, containerRef, children }) {
+export function ZoomableGroup({ height, width, containerRef, children }) {
   const {
     isZoomed,
     zoom,
@@ -69,3 +69,5 @@ ZoomableGroup.propTypes = {
 ZoomableGroup.defaultProps = {
   containerRef: undefined
 };
+
+export default React.memo(ZoomableGroup);
