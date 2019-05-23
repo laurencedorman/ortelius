@@ -24,18 +24,31 @@ export function ZoomToggle({ onClick, containerRef }) {
 
 export function ZoomableGroup({ height, width, containerRef, children }) {
   const {
+    pan,
     isZoomed,
-    zoom,
+    zoom: { transform, immediate },
     setHighlightedGeography,
     setZoom,
     resetZoom,
     resetHighlightedGeography
   } = useContext(OrteliusContext);
 
-  const zoomTransform = useSpring({ transform: zoom });
+  const zoomTransform = useSpring({ transform, immediate });
 
   const handleZoomClick = ({ bounds, geography, data }) => {
-    setZoom(zoomToBoundingBox({ bounds, width, height }));
+    if (pan && (pan.x !== 0 || pan.y !== 0)) {
+      setZoom({
+        transform: [transform[0] + pan.x, transform[1] + pan.y, transform[2]],
+        immediate: true
+      });
+
+      setTimeout(() => {
+        setZoom({ transform: zoomToBoundingBox({ bounds, width, height }), immediate: false });
+      });
+    } else {
+      setZoom({ transform: zoomToBoundingBox({ bounds, width, height }), immediate: false });
+    }
+
     setHighlightedGeography({ ...geography, ...data });
   };
 

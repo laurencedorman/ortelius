@@ -40,13 +40,13 @@ export default function Map({ margin, geoAssets, projection, legend, toolbar, re
             projection={projection}
             {...geoAssets}
             render={geographyProps => (
-              <ZoomableGroup containerRef={containerEl} height={drawHeight} width={drawWidth}>
-                <PannableGroup height={drawHeight} width={drawWidth}>
+              <PannableGroup height={drawHeight} width={drawWidth}>
+                <ZoomableGroup containerRef={containerEl} height={drawHeight} width={drawWidth}>
                   {render({ ...geographyProps })}
                   {annotations && <Annotations annotations={annotations} />}
                   {markers && <Markers markers={markers} />}
-                </PannableGroup>
-              </ZoomableGroup>
+                </ZoomableGroup>
+              </PannableGroup>
             )}
           />
         </g>

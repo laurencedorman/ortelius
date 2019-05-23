@@ -1,9 +1,8 @@
-const initialState = {
+export const initialState = {
   valueKey: null,
   isZoomed: false,
   highlightedGeography: false,
-  zoom: [0, 0, 1],
-  isPanning: false,
+  zoom: { transform: [0, 0, 1], immediate: false },
   pan: { x: 0, y: 0 }
 };
 

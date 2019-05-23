@@ -2,18 +2,29 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { OrteliusContext } from 'modules';
+import { debounce } from 'utils';
+
+const debounced = (() => {
+  return debounce((setPan, privatePan, xDiff, yDiff) => {
+    setPan({
+      x: privatePan.x - xDiff,
+      y: privatePan.y - yDiff
+    });
+  }, 300);
+})();
 
 // @todo - very rough around the edges: missing smooth transition from zoom to pan
 // @todo - when zoomed, the pan is too sensitive
 const PannableGroup = ({ children, height, width }) => {
-  const { zoom } = useContext(OrteliusContext);
+  const { zoom, pan, setPan } = useContext(OrteliusContext);
 
   const [isPanning, setIsPanning] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [privatePan, setPrivatePan] = useState({ x: 0, y: 0 });
 
+  console.log(pan);
   useEffect(() => {
-    setPan({ x: 0, y: 0 });
+    setPrivatePan({ x: 0, y: 0 });
   }, [zoom]);
 
   const startPan = e => {
@@ -41,10 +52,12 @@ const PannableGroup = ({ children, height, width }) => {
       y: e.pageY
     });
 
-    setPan({
-      x: pan.x - xDiff,
-      y: pan.y - yDiff
+    setPrivatePan({
+      x: privatePan.x - xDiff,
+      y: privatePan.y - yDiff
     });
+
+    debounced(setPan, privatePan, xDiff, yDiff);
   };
 
   const endPan = e => {
@@ -64,7 +77,7 @@ const PannableGroup = ({ children, height, width }) => {
       onMouseMove={updatePan}
       onMouseUp={endPan}
       onMouseLeave={endPan}
-      transform={`translate(${pan.x},${pan.y})`}
+      transform={`translate(${privatePan.x},${privatePan.y})`}
     >
       <rect width={width} height={height} fill="rgba(0,0,0,0)" />
       <g className="pannable-group-children">{children}</g>
