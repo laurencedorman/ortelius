@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Toolbar.module';
+import styles from './Toolbar.module.scss';
 
 export default function Toolbar({ width, margin, children }) {
   const start = margin;

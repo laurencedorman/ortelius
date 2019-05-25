@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { OrteliusContext } from 'modules';
 
-import styles from './Tooltip.module';
+import styles from './Tooltip.module.scss';
 
 // @todo no data option
 const Tooltip = ({ formatter }) => {

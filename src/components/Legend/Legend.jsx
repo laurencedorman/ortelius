@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Legend.module';
+import styles from './Legend.module.scss';
 
 // @todo toggle legend
 // @todo make compatible with scaleLinear

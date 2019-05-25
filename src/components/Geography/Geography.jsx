@@ -4,7 +4,7 @@ import { useSpring, animated } from 'react-spring';
 
 import { ZoomContext } from 'components';
 
-import styles from './Geography.module';
+import styles from './Geography.module.scss';
 
 export function Geography({ path, fillInitial, fillHover, stroke, geography, data }) {
   const { handleZoomClick } = useContext(ZoomContext);

@@ -1,4 +1,26 @@
 {
   "presets": ["@babel/preset-react"],
-  "plugins": ["@babel/plugin-proposal-class-properties"]
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    [
+      "module-resolver",
+      {
+        "root": ["."],
+        "alias": {
+          "components": "./src/components",
+          "hooks": "./src/hooks",
+          "modules": "./src/modules",
+          "utils": "./src/utils"
+        }
+      }
+    ],
+    [
+      "css-modules-transform",
+      {
+        "preprocessCss": "./.babelrc.sass.js",
+        "extensions": [".css", ".scss"],
+        "extractCss": "./lib/styles.css"
+      }
+    ]
+  ]
 }

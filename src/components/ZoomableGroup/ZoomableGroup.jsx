@@ -7,7 +7,7 @@ import { zoomToBoundingBox } from 'utils';
 
 import { OrteliusContext } from 'modules';
 
-import styles from './ZoomableGroup.module';
+import styles from './ZoomableGroup.module.scss';
 
 export const ZoomContext = React.createContext({});
 

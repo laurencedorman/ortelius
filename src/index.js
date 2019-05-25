@@ -5,6 +5,7 @@ import { Choropleth } from 'modules';
 import { fetchCSV, fetchJSON } from 'utils';
 
 export default {
+  Choropleth,
   createMap: ({ container, type, ...rest }) => {
     const containerElem = document.querySelector(container);
     let Factory;

@@ -7,7 +7,7 @@ import { OrteliusContext } from 'modules';
 
 import Toolbar from './Toolbar';
 
-import styles from './DateTimeToolbar.module';
+import styles from './DateTimeToolbar.module.scss';
 
 export function DateTimeToolbar({
   interval,

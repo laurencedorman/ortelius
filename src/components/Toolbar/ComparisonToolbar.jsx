@@ -6,7 +6,7 @@ import { OrteliusContext } from 'modules';
 
 import Toolbar from './Toolbar';
 
-import styles from './ComparisonToolbar.module';
+import styles from './ComparisonToolbar.module.scss';
 
 export function ComparisonToolbar({ options, ...toolbarProps }) {
   const { setValueKey, valueKey } = useContext(OrteliusContext);
