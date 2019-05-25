@@ -11,7 +11,8 @@
     "build-dist": "webpack --mode=production",
     "build-lib": "babel src -d lib",
     "build": "npm run build-dist && npm run build-lib",
-    "clean": "rimraf dist lib"
+    "clean": "rimraf dist lib",
+    "todo": "leasot -x --reporter markdown 'src/**/*' > TODO.md"
   },
   "repository": {
     "type": "git",
@@ -66,6 +67,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "leasot": "^7.3.4",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",

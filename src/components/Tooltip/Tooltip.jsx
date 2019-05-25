@@ -14,6 +14,7 @@ const Tooltip = ({ formatter }) => {
     return null;
   }
 
+  // @todo - need to create a try/catch around this
   const items = formatter(highlightedGeography);
 
   return (
