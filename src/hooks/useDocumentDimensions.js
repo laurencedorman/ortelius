@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
-export default function useDocumentDimensions() {
+export default function useDocumentDimensions({ height, width }) {
   const getWindowDimensions = () => {
     const { clientHeight, clientWidth } = window.document.documentElement;
 
     return {
-      height: clientHeight,
-      width: clientWidth
+      height: height || clientHeight,
+      width: width || clientWidth
     };
   };
 

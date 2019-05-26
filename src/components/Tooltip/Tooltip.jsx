@@ -14,23 +14,32 @@ const Tooltip = ({ formatter }) => {
     return null;
   }
 
-  // @todo - need to create a try/catch around this
-  const items = formatter(highlightedGeography);
+  try {
+    const items = formatter(highlightedGeography);
 
-  return (
-    <div className={styles.Tooltip}>
-      {items.map(({ isTitle, label, value }, index) => {
-        const key = value + index;
+    return (
+      <div className={styles.Tooltip}>
+        {items.map(({ isTitle, label, value }, index) => {
+          const key = value + index;
 
-        return (
-          <p key={key} className={classNames({ [styles.TooltipTitle]: isTitle })}>
-            <span className={styles.TooltipKey}>{`${label} :`}</span>
-            <span className={styles.TooltipValue}>{value}</span>
-          </p>
-        );
-      })}
-    </div>
-  );
+          return (
+            <p key={key} className={classNames({ [styles.TooltipTitle]: isTitle })}>
+              <span className={styles.TooltipKey}>{`${label} :`}</span>
+              <span className={styles.TooltipValue}>{value}</span>
+            </p>
+          );
+        })}
+      </div>
+    );
+  } catch (e) {
+    console.error(e);
+
+    return (
+      <div className={styles.Tooltip}>
+        <p>Il y avait une erreur en affichant le tooltip : {e.message}</p>
+      </div>
+    );
+  }
 };
 
 Tooltip.propTypes = {

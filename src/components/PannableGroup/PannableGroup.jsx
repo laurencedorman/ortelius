@@ -16,14 +16,14 @@ const debounced = (() => {
 // @todo - very rough around the edges: missing smooth transition from zoom to pan
 // @todo - when zoomed, the pan is too sensitive
 const PannableGroup = ({ children, height, width }) => {
-  const { zoom, pan, setPan } = useContext(OrteliusContext);
+  const { zoom, setPan } = useContext(OrteliusContext);
 
   const [isPanning, setIsPanning] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [privatePan, setPrivatePan] = useState({ x: 0, y: 0 });
 
-  console.log(pan);
   useEffect(() => {
+    setPan({ x: 0, y: 0 });
     setPrivatePan({ x: 0, y: 0 });
   }, [zoom]);
 

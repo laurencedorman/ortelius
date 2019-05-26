@@ -16,9 +16,19 @@ import { useDocumentDimensions } from 'hooks';
 const Annotations = () => null;
 const Markers = () => null;
 
-export default function Map({ margin, geoAssets, projection, legend, toolbar, render, tooltip }) {
+export default function Map({
+  margin,
+  height,
+  width,
+  geoAssets,
+  projection,
+  legend,
+  toolbar,
+  render,
+  tooltip
+}) {
   const containerEl = useRef(null);
-  const dimensions = useDocumentDimensions();
+  const dimensions = useDocumentDimensions({ height, width });
 
   const { drawHeight, drawWidth } = getDrawDims(
     dimensions.height,
