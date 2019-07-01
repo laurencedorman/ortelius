@@ -75,9 +75,12 @@ Map.propTypes = {
     filter: PropTypes.func
   }).isRequired,
   projection: PropTypes.func,
-  legend: PropTypes.shape({
-    labels: PropTypes.arrayOf(String)
-  }),
+  legend: PropTypes.oneOfType([ 
+    PropTypes.bool,
+    PropTypes.shape({
+      labels: PropTypes.arrayOf(String)
+    })
+  ],
   render: PropTypes.func.isRequired,
   toolbar: PropTypes.object,
   tooltip: PropTypes.shape({
