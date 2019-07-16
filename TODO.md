@@ -8,4 +8,3 @@
 | src/components/PannableGroup/PannableGroup.jsx | 16 | - very rough around the edges: missing smooth transition from zoom to pan
 | src/components/PannableGroup/PannableGroup.jsx | 17 | - when zoomed, the pan is too sensitive
 | src/components/Tooltip/Tooltip.jsx | 9 | no data option
-| src/components/Tooltip/Tooltip.jsx | 17 | - need to create a try/catch around this
