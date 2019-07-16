@@ -80,7 +80,7 @@ Map.propTypes = {
     PropTypes.shape({
       labels: PropTypes.arrayOf(String)
     })
-  ],
+  ]),
   render: PropTypes.func.isRequired,
   toolbar: PropTypes.object,
   tooltip: PropTypes.shape({
